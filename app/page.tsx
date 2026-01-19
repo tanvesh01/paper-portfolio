@@ -2,64 +2,115 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <nav className="fixed top-0 left-0 w-full z-20 p-6 flex">
+        <p className="font-mono text-white font-medium uppercase">Tanvesh</p>
+      </nav>
+      <div className="relative min-h-[200vh] bg-white  selection:bg-primary selection:text-white">
+        <section className="relative h-[120vh] w-full flex flex-col  overflow-hidden text-white">
+          <div className="absolute inset-0 -top-20   z-0 h-full">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/frame-52.png"
+              alt="Background ambience"
+              fill
+              className="object-cover "
+              priority
+              quality={100}
+              sizes="100vw"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="absolute  bg-linear-to-t from-white to-transparent z-5 h-80 bottom-0 w-full flex flex-col justify-end text-primary font-mono items-center uppercase">
+              <p>Mt. Thamserku, Nepal</p>
+              <p>27.79028°N 86.78750°E</p>
+            </div>
+          </div>
+
+          <main className="relative z-10 pt-72 font-departure text-white uppercase flex flex-col gap-4 max-w-3xl mx-auto text-xl">
+            <p>
+              I&apos;m an engineer and designer. I build software with a strong
+              focus on aesthetics and how things work. I&apos;m interested in
+              the craft behind everything. <br />
+            </p>
+
+            <p>
+              I run ultra marathons and I&apos;m training to become a
+              professional athlete. I take photographs and explore visual
+              culture.
+            </p>
+
+            <p>
+              Currently based in Bengaluru, working remotely and traveling
+              through Southeast Asia when I can.
+            </p>
+          </main>
+        </section>
+        <div className="h-40 relative ">
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-white/0 z-10 h-40"></div>
+          <svg className="pointer-events-none absolute inset-0 size-full select-none text-blue-500/80   group-aria-selected:block opacity-[.15]">
+            <defs>
+              <pattern
+                id=":Se:"
+                width="4"
+                height="4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)"
+              >
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                ></line>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#:Se:)"></rect>
+          </svg>
         </div>
-      </main>
-    </div>
+        <div className="border border-primary-border w-full ">
+          <div className="h-96 border border-primary-border border-y-0 p-4 max-w-4/5 mx-auto relative">
+            <div className="absolute inset-0 [z-index:1]">
+              <svg
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 [z-index:-1] size-full fill-blue-500/50 stroke-blue-500/50 opacity-[.15]"
+              >
+                <defs>
+                  <pattern
+                    id=":rl:"
+                    width="12"
+                    height="12"
+                    patternUnits="userSpaceOnUse"
+                    x="-1"
+                    y="-1"
+                  >
+                    <path
+                      d="M.5 12V.5H12"
+                      fill="none"
+                      stroke-dasharray="0"
+                    ></path>
+                  </pattern>
+                </defs>
+                <rect
+                  width="100%"
+                  height="100%"
+                  stroke-width="0"
+                  fill="url(#:rl:)"
+                ></rect>
+              </svg>
+            </div>
+            <h2 className="uppercase font-departure text-2xl text-primary">
+              Work
+            </h2>
+            <p className="font-mono  text-neutral-600 text-sm uppercase">
+              Places I&apos;ve been, things I&apos;ve learnt
+            </p>
+
+            <div>
+              <h4>Followalice</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
