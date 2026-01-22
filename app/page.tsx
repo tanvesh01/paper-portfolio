@@ -3,8 +3,14 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-20 p-6 flex">
+      <nav className="fixed top-0 left-0 w-full z-20 p-6 flex justify-between items-center">
         <p className="font-mono text-white font-medium uppercase">Tanvesh</p>
+        <a
+          href="/blog"
+          className="font-mono text-white font-medium uppercase hover:text-primary transition-colors"
+        >
+          Writing
+        </a>
       </nav>
       <div className="relative min-h-[200vh] bg-white  selection:bg-primary selection:text-white">
         <section className="relative h-[120vh] w-full flex flex-col  overflow-hidden text-white">

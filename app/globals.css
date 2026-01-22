@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #0a0a0a;
@@ -16,6 +17,24 @@
   --font-ibm-plex-serif: var(--font-ibm-plex-serif);
 
   --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+
+  /* Typography plugin customization */
+  --prose-body: var(--foreground);
+  --prose-headings: var(--primary);
+  --prose-lead: var(--foreground);
+  --prose-links: var(--primary);
+  --prose-bold: var(--foreground);
+  --prose-counters: var(--primary);
+  --prose-bullets: var(--primary);
+  --prose-hr: var(--primary-border);
+  --prose-quotes: var(--foreground);
+  --prose-quote-borders: var(--primary);
+  --prose-captions: var(--foreground);
+  --prose-code: var(--foreground);
+  --prose-pre-code: var(--foreground);
+  --prose-pre-bg: #1a1a1a;
+  --prose-th-borders: var(--primary-border);
+  --prose-td-borders: var(--primary-border);
 
   @keyframes fade-in-up {
     from {
