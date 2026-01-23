@@ -12,7 +12,7 @@ import {
 
 interface AsciiCursorEffectProps {
   imageUrl: string;
-  containerRef: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
   radius?: number;
   gridSize?: number;
   className?: string;

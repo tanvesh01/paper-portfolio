@@ -1,7 +1,7 @@
-import { useId } from 'react';
+import { useId } from "react";
 
 interface GridPatternProps {
-  variant?: 'diagonal' | 'l-shaped';
+  variant?: "diagonal" | "l-shaped";
   color?: string;
   opacity?: number;
   size?: number;
@@ -11,18 +11,18 @@ interface GridPatternProps {
 }
 
 export function GridPattern({
-  variant = 'l-shaped',
-  color = 'currentColor',
+  variant = "l-shaped",
+  color = "currentColor",
   opacity = 0.15,
   size,
   strokeWidth = 1.5,
-  className = '',
+  className = "",
   patternId,
 }: GridPatternProps) {
   const autoId = useId();
   const id = patternId || autoId;
 
-  const defaultSize = variant === 'diagonal' ? 4 : 12;
+  const defaultSize = variant === "diagonal" ? 4 : 12;
   const patternSize = size ?? defaultSize;
 
   return (
@@ -32,7 +32,7 @@ export function GridPattern({
       style={{ opacity }}
     >
       <defs>
-        {variant === 'diagonal' ? (
+        {variant === "diagonal" ? (
           <pattern
             id={id}
             width={patternSize}
@@ -67,12 +67,7 @@ export function GridPattern({
           </pattern>
         )}
       </defs>
-      <rect
-        width="100%"
-        height="100%"
-        strokeWidth="0"
-        fill={`url(#${id})`}
-      />
+      <rect width="100%" height="100%" strokeWidth="0" fill={`url(#${id})`} />
     </svg>
   );
 }

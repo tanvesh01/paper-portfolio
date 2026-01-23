@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { useRef } from "react";
 import { AsciiCursorEffect } from "@/components/ascii-cursor-effect";
 import { GridPattern } from "@/components/ui/grid-pattern";
+import { MountainPattern } from "@/components/ui/mountain-pattern";
+import FollowAliceWork from "@/app/components/work/FollowAliceWork";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -49,7 +51,10 @@ export default function Home() {
             </div>
           </div>
 
-          <main id="main" className="relative z-10 pt-72 font-departure text-white uppercase flex flex-col gap-4 max-w-3xl mx-auto text-xl [text-shadow:_0_2px_8px_rgb(0_0_0_/_40%)]">
+          <main
+            id="main"
+            className="relative z-10 pt-72 font-departure text-white uppercase flex flex-col gap-4 max-w-3xl mx-auto text-xl [text-shadow:_0_2px_8px_rgb(0_0_0_/_40%)]"
+          >
             <p>
               I&apos;m an engineer and designer. I build software with a strong
               focus on aesthetics and how things work. I&apos;m interested in
@@ -88,62 +93,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="relative p-6 space-y-4">
-                <GridPattern
-                  variant="l-shaped"
-                  className="fill-blue-500/50 stroke-blue-500/50"
-                  opacity={0.15}
-                />
-                <div className="relative z-10 space-y-4">
-                  <div>
-                    <h3 className="font-departure text-2xl uppercase text-primary">
-                      FOLLOWALICE
-                    </h3>
-                    <p className="font-mono text-sm text-neutral-600 uppercase">
-                      OCT 2022 - PRESENT
-                    </p>
-                  </div>
-
-                  <p className="font-sans text-base text-neutral-700 leading-relaxed">
-                    A Travel company that runs small-group, guided adventure trips and treks to epic destinations around the world.
-                  </p>
-
-                  <div className="space-y-2">
-                    <h4 className="font-mono text-xs uppercase tracking-wide text-neutral-500">
-                      WHAT I LEARNT
-                    </h4>
-                    <p className="font-sans text-sm text-neutral-700">
-                      How to test quietly first before shipping code, how to break things less, how to set systems around you so that you make less mistakes.
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h4 className="font-mono text-xs uppercase tracking-wide text-neutral-500">
-                      NOTABLE WORK
-                    </h4>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1">
-                      <a
-                        href="#self-checkout"
-                        className="text-primary hover:underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
-                      >
-                        Self checkout system
-                      </a>
-                      <a
-                        href="#public-website"
-                        className="text-primary hover:underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
-                      >
-                        Public Website
-                      </a>
-                      <a
-                        href="#ai-workflows"
-                        className="text-primary hover:underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
-                      >
-                        Experiments around AI workflows
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <FollowAliceWork />
             </div>
           </div>
         </div>
