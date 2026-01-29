@@ -6,6 +6,9 @@ import { AsciiCursorEffect } from "@/components/ascii-cursor-effect";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { MountainPattern } from "@/components/ui/mountain-pattern";
 import FollowAliceWork from "@/app/components/work/FollowAliceWork";
+import DukaanWork from "./components/work/DukaanWork";
+import { InteractiveCard } from "@/components/ui/interactive-card";
+import { MorphSurface } from "@/components/ui/morph-surface";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -92,8 +95,15 @@ export default function Home() {
                   Places I&apos;ve been, things I&apos;ve learnt
                 </p>
               </div>
-
-              <FollowAliceWork />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <FollowAliceWork />
+                <DukaanWork />
+              </div>
+              <MorphSurface
+                title="My App"
+                buttonText="Contact"
+                placeholder="Send us a message..."
+              />
             </div>
           </div>
         </div>

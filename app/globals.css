@@ -18,6 +18,10 @@
 
   --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 
+  /* MorphSurface component colors */
+  --color-orange: #ff4d00;
+  --color-orange-500: #ff4d00;
+
   /* Typography plugin customization */
   --prose-body: var(--foreground);
   --prose-headings: var(--primary);
