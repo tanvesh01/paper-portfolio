@@ -9,6 +9,8 @@ interface AutoplayVideoProps {
   slowMotionRate?: number;
 }
 
+const PAUSE_VIDEO_BY_DEFAULT = false;
+
 export function AutoplayVideo({
   src,
   className = "",
@@ -35,7 +37,7 @@ export function AutoplayVideo({
     if (!videoElement) return;
 
     const observerOptions = {
-      threshold: 0.5, // Trigger when 50% of video is visible
+      threshold: 0.5,
       rootMargin: "0px",
     };
 
@@ -43,16 +45,11 @@ export function AutoplayVideo({
       entries.forEach((entry) => {
         setIsVisible(entry.isIntersecting);
 
-        if (entry.isIntersecting) {
-          // Autoplay when visible
-          videoElement
-            .play()
-            .catch((error) => {
-              // Handle autoplay rejection (e.g., browser policies)
-              console.warn("Video autoplay failed:", error);
-            });
+        if (entry.isIntersecting && !PAUSE_VIDEO_BY_DEFAULT) {
+          videoElement.play().catch((error) => {
+            console.warn("Video autoplay failed:", error);
+          });
         } else {
-          // Pause when out of view
           videoElement.pause();
         }
       });

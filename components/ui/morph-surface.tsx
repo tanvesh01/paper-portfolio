@@ -108,7 +108,7 @@ export function MorphSurface({
 
   return (
     <div
-      className={cx("flex items-center justify-center", className)}
+      className={cx("flex items-center justify-center relative", className)}
       style={{
         width,
         height,
@@ -118,7 +118,7 @@ export function MorphSurface({
       <motion.div
         data-footer
         ref={rootRef}
-        className="bg-white relative flex flex-col items-center bottom-8 border border-neutral-200  max-sm:bottom-5 z-30 shadow-[0px_5px_0px_rgba(0,0,0,0.1)] overflow-hidden"
+        className="bg-white absolute flex flex-col items-center  border border-neutral-200  max-sm:bottom-5 z-30 shadow-[0px_5px_0px_rgba(0,0,0,0.1)] overflow-hidden"
         initial={false}
         animate={{
           width: showFeedback ? width : "auto",
@@ -184,6 +184,8 @@ function Dock({
               className="w-5 h-5 rounded-full text-primary"
               // style={{ backgroundColor: "orange" }}
               layoutId="morph-surface-dot"
+              // initial={{ filter: "blur(0px)" }}
+              // animate={{ filter: showFeedback ? "blur(10px)" : "blur(0px)" }}
               transition={LOGO_SPRING}
             >
               <span className="block">
@@ -279,10 +281,28 @@ const Feedback = React.forwardRef<
       {showFeedback && (
         <motion.div
           layoutId="morph-surface-dot"
-          className="w-2 h-2 rounded-full absolute top-[18.5px] left-4"
-          style={{ backgroundColor: "orange" }}
+          initial={{ filter: "blur(10px)" }}
+          animate={{ filter: "blur(0px)" }}
+          className="w-5 h-5 rounded-full absolute top-[18.5px] left-4 text-primary"
           transition={LOGO_SPRING}
-        />
+        >
+          <span className="block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"
+              />
+            </svg>
+          </span>
+        </motion.div>
       )}
     </form>
   );

@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
+
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
+import { Tooltip } from "@/components/ui/tooltip";
 
 export default function FollowAliceWork() {
   return (
@@ -39,52 +42,64 @@ export default function FollowAliceWork() {
             </p>
           </div>
 
-          <p className="font-mono text-lg text-neutral-700  mt-6">
+          <p className="font-mono text-neutral-700 mt-6">
             A boutique adventure operator running small-group trips to places
             like Kilimanjaro, Everest Base Camp, and safaris across East Africa.
           </p>
 
-          <h4 className="font-mono text-sm uppercase text-black mt-6">
+          {/*<h4 className="font-mono text-sm uppercase text-black mt-6">
             WHAT I LEARNT
           </h4>
-          <p className="font-mono text-neutral-700 text-lg mt-2">
+          <p className="font-mono text-neutral-700 mt-2">
             How to test quietly before shipping, how to break things less, and
             how to set up systems around me so I naturally make fewer mistakes.
-          </p>
+          </p>*/}
 
-          <div className="flex flex-wrap my-2">
-            <button className="font-sans cursor-pointer hidden  bg-primary/80 backdrop-blur-xs shadow-[0px_5px_0px_rgba(0,0,0,0.1)] px-4 py-1 rounded-md shadow-primary text-white text-sm mt-2 hover:bg-primary transition-colors">
-              Some Notable work @followalice
-              <GridPattern
-                variant="diagonal"
-                className="text-white"
-                opacity={0.15}
-              />
-            </button>
-            <button className="font-sans cursor-pointer relative flex items-center gap-2 text-primary bg-transparent border border-neutral-200 shadow-[0px_5px_0px_rgba(0,0,0,0.1)] px-4 pl-3 py-1 rounded-md shadow-neutral-200 text-sm mt-2 hover:bg-neutral-200/30 transition-colors">
-              <span className="block">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="size-6"
+          <div className="flex flex-wrap my-2 relative">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
+              <Tooltip
+                content={
+                  <>
+                    <p className="font-departure text-sm max-w-xs uppercase">
+                      Built all of Self checkout feauture. From checkout to
+                      Payments and then to Dashboards
+                    </p>
+                    <div className="mt-3">
+                      <Image
+                        src="/self-checkout-fa.png"
+                        alt="FollowAlice self-checkout flow"
+                        width={1280}
+                        height={960}
+                        loading="lazy"
+                        className="w-full max-w-xs rounded-md border border-black/10 shadow-sm"
+                      />
+                    </div>
+                  </>
+                }
+                side="top"
+                align="center"
+                delayDuration={100}
+              >
+                <a
+                  href="#self-checkout"
+                  className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59"
-                  />
-                </svg>
-              </span>
-              Some Notable work @followalice
-              <GridPattern
-                variant="diagonal"
-                className="text-primary"
-                opacity={0.15}
-              />
-            </button>
+                  Self checkout system
+                </a>
+              </Tooltip>
+              <a
+                href="#public-website"
+                className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
+              >
+                Public Website
+              </a>
+              <a
+                href="#ai-workflows"
+                className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
+              >
+                Experiments around AI workflows
+              </a>
+            </div>
           </div>
         </div>
       </div>

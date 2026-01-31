@@ -9,6 +9,7 @@ import FollowAliceWork from "@/app/components/work/FollowAliceWork";
 import DukaanWork from "./components/work/DukaanWork";
 import { InteractiveCard } from "@/components/ui/interactive-card";
 import { MorphSurface } from "@/components/ui/morph-surface";
+import { AutoplayVideo } from "@/components/ui/autoplay-video";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -84,8 +85,8 @@ export default function Home() {
             opacity={0.15}
           />
         </div>
-        <div className="border border-primary-border w-full">
-          <div className="border border-primary-border border-y-0 p-4 max-w-[80%] mx-auto">
+        <div className=" w-full ">
+          <div className=" p-4 max-w-[80%] mx-auto md:shadow-[0px_1px_4px_1px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(0,0,0,0.50),0px_-1px_1px_1px_#FFF_inset]">
             <div className="space-y-8">
               <div>
                 <h2 className="uppercase font-departure text-2xl text-primary">
@@ -99,11 +100,191 @@ export default function Home() {
                 <FollowAliceWork />
                 <DukaanWork />
               </div>
-              <MorphSurface
-                title="My App"
-                buttonText="Contact"
-                placeholder="Send us a message..."
-              />
+            </div>
+            <div className="space-y-8 pt-10 border-t border-primary-border">
+              <div>
+                <h2 className="uppercase font-departure text-3xl text-primary">
+                  Work
+                </h2>
+                <p className="font-mono text-neutral-600 text-sm uppercase">
+                  Places I{"'"}ve been, things I{"'"}ve learnt
+                </p>
+              </div>
+              <div className="space-y-10 mt-8">
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="uppercase font-departure text-xl text-primary">
+                      Followalice{" "}
+                      <span className="font-mono text-sm text-neutral-600 uppercase">
+                        OCT 2022 - PRESENT
+                      </span>
+                    </h3>
+
+                    <p className="font-mono text-sm text-black uppercase">
+                      Engineer + Design
+                    </p>
+                    <div className="flex pb-4 gap-4">
+                      <p className="font-sans text-neutral-800 text-sm max-w-md mt-4">
+                        <span className="font-ibm-plex-serif"> A </span>{" "}
+                        boutique adventure operator running small-group
+                        expeditions to Kilimanjaro, Everest Base Camp, and
+                        safaris across East Africa.
+                      </p>
+                      <p className="font-sans text-neutral-600 text-sm max-w-md mt-4">
+                        Built the end-to-end self-checkout experience, covering
+                        trip selection, payments, and post-booking dashboards.
+                        Designed and implemented an Airbnb-inspired self-booking
+                        flow for trips. Currently working on a back-office app
+                        to help on-ground and remote teams operate more
+                        efficiently.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
+                    <AutoplayVideo
+                      src="/followalice.mp4"
+                      containerClassName="relative shadow-md aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 p-2 snap-start"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="relative shadow-md bg-yellow-200 p-4 aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-neutral-200  snap-start">
+                      <Image
+                        src="/self-checkout-fa.png"
+                        alt="Field notes image 2"
+                        fill
+                        className="object-cover "
+                        quality={100}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="uppercase font-departure text-lg text-primary">
+                      Training Blocks
+                    </h3>
+                    <p className="font-mono text-neutral-600 text-sm uppercase">
+                      Long runs, recovery weeks, and race prep rhythms.
+                    </p>
+                  </div>
+                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Training blocks image 1"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Training blocks image 2"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Training blocks image 3"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="uppercase font-departure text-lg text-primary">
+                      Travel Studies
+                    </h3>
+                    <p className="font-mono text-neutral-600 text-sm uppercase">
+                      Light, texture, and pace across new terrain.
+                    </p>
+                  </div>
+                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Travel studies image 1"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Travel studies image 2"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Travel studies image 3"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="uppercase font-departure text-lg text-primary">
+                      Build Journal
+                    </h3>
+                    <p className="font-mono text-neutral-600 text-sm uppercase">
+                      Interfaces, prototypes, and unfinished ideas.
+                    </p>
+                  </div>
+                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Build journal image 1"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Build journal image 2"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/frame-52.png"
+                        alt="Build journal image 3"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

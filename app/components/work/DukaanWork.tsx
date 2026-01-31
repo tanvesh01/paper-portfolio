@@ -3,6 +3,7 @@
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
 import { MorphSurface } from "@/components/ui/morph-surface";
+import { Tooltip } from "@/components/ui/tooltip";
 
 export default function DukaanWork() {
   return (
@@ -38,30 +39,44 @@ export default function DukaanWork() {
             <p className="font-mono text text-black uppercase">Engineer</p>
           </div>
 
-          <p className="font-mono text-lg text-neutral-700  mt-6">
+          <p className="font-mono text-neutral-700  mt-6">
             A startup building no-code commerce tools for India&apos;s 100+
             million small businesses, from neighborhood shops to restaurants,
             enabling them to set up digital presence and accept payments.
           </p>
 
-          <h4 className="font-mono text-sm uppercase text-black mt-6">
+          {/*<h4 className="font-mono text-sm uppercase text-black mt-6">
             WHAT I LEARNT
           </h4>
-          <p className="font-mono text-neutral-700 text-lg mt-2">
+          <p className="font-mono text-neutral-700 mt-2">
             How to ship fast, iterate based on user feedback, and build with
             limited resources while maintaining quality.
-          </p>
+          </p>*/}
 
           <h4 className="font-mono text-sm uppercase text-neutral-600 mt-6">
             NOTABLE WORK
           </h4>
           <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
-            <a
-              href="#self-checkout"
-              className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
+            <Tooltip
+              content={
+                <p className="font-departure uppercase text-sm max-w-xs">
+                  Built a complete self-checkout system allowing customers to
+                  scan items, apply discounts, and complete payments without
+                  staff assistance. Integrated with inventory management and
+                  receipt generation.
+                </p>
+              }
+              side="top"
+              align="center"
+              delayDuration={100}
             >
-              Self checkout system
-            </a>
+              <a
+                href="#self-checkout"
+                className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
+              >
+                Self checkout system
+              </a>
+            </Tooltip>
             <a
               href="#public-website"
               className="text-primary underline focus:underline focus:outline-2 focus:outline-offset-2 focus:outline-primary font-mono text-sm"
