@@ -10,6 +10,7 @@ import DukaanWork from "./components/work/DukaanWork";
 import { InteractiveCard } from "@/components/ui/interactive-card";
 import { MorphSurface } from "@/components/ui/morph-surface";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
+import { Tooltip } from "@/components/ui/tooltip";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -123,7 +124,7 @@ export default function Home() {
                     <p className="font-mono text-sm text-black uppercase">
                       Engineer + Design
                     </p>
-                    <div className="flex pb-4 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
                       <p className="font-sans text-neutral-800 text-sm max-w-md mt-4">
                         <span className="font-ibm-plex-serif"> A </span>{" "}
                         boutique adventure operator running small-group
@@ -140,58 +141,112 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
+                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
                     <AutoplayVideo
                       src="/followalice.mp4"
-                      containerClassName="relative shadow-md aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 p-2 snap-start"
+                      containerClassName="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 snap-start"
                       className="h-full w-full object-cover"
                     />
-                    <div className="relative shadow-md bg-yellow-200 p-4 aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-neutral-200  snap-start">
-                      <Image
-                        src="/self-checkout-fa.png"
-                        alt="Field notes image 2"
-                        fill
-                        className="object-cover "
-                        quality={100}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
+                    <div className="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-100 hover:border-neutral-300 snap-start">
+                      <Tooltip
+                        content={
+                          <p className="font-departure uppercase text-xs max-w-xs">
+                            Designed and Built a self-checkout system
+                          </p>
+                        }
+                        side="top"
+                        align="center"
+                        delayDuration={100}
+                      >
+                        <Image
+                          src="/self-checkout-fa.png"
+                          alt="Field notes image 2"
+                          fill
+                          className="object-cover"
+                          quality={100}
+                          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                        />
+                      </Tooltip>
+                    </div>
+                    <div className="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-100 hover:border-neutral- snap-start">
+                      <Tooltip
+                        content={
+                          <p className="font-departure uppercase text-xs ">
+                            Hiking to Everest Base camp with Followalice on
+                            ground sherpas
+                          </p>
+                        }
+                        side="top"
+                        align="center"
+                        delayDuration={100}
+                      >
+                        <Image
+                          src="/nepal-fa.jpg"
+                          alt="Walking in Nepal"
+                          fill
+                          className="object-cover "
+                          quality={100}
+                          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                        />
+                      </Tooltip>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div>
                     <h3 className="uppercase font-departure text-lg text-primary">
-                      Training Blocks
+                      Nero
                     </h3>
-                    <p className="font-mono text-neutral-600 text-sm uppercase">
-                      Long runs, recovery weeks, and race prep rhythms.
+                    <p className="font-mono text-sm text-black uppercase">
+                      Creator
                     </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
+                      <p className="font-sans text-neutral-800 text-sm max-w-md mt-4">
+                        An infinite canvas for black and white image
+                        exploration.
+                      </p>
+                      <p className="font-sans text-neutral-600 text-sm max-w-md mt-4">
+                        Nero converts color images in real time using
+                        GPU-accelerated luminance mapping, with expressive
+                        effects like dithering and paper texture overlays.
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
-                        src="/frame-52.png"
-                        alt="Training blocks image 1"
+                        src="/nero-canvas.png"
+                        alt="Nero canvas UI showing infinite workspace"
                         fill
                         className="object-cover"
                         quality={90}
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
-                        src="/frame-52.png"
-                        alt="Training blocks image 2"
+                        src="/nero-cover.png"
+                        alt="Nero cover screen"
                         fill
                         className="object-cover"
                         quality={90}
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
-                        src="/frame-52.png"
-                        alt="Training blocks image 3"
+                        src="/nero-export.png"
+                        alt="Nero export options"
+                        fill
+                        className="object-cover"
+                        quality={90}
+                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                      <Image
+                        src="/nero-panel.png"
+                        alt="Nero control panel"
                         fill
                         className="object-cover"
                         quality={90}
@@ -209,8 +264,8 @@ export default function Home() {
                       Light, texture, and pace across new terrain.
                     </p>
                   </div>
-                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Travel studies image 1"
@@ -220,7 +275,7 @@ export default function Home() {
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Travel studies image 2"
@@ -230,7 +285,7 @@ export default function Home() {
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Travel studies image 3"
@@ -251,8 +306,8 @@ export default function Home() {
                       Interfaces, prototypes, and unfinished ideas.
                     </p>
                   </div>
-                  <div className="flex gap-4 overflow-x-auto md:overflow-visible md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory">
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Build journal image 1"
@@ -262,7 +317,7 @@ export default function Home() {
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Build journal image 2"
@@ -272,7 +327,7 @@ export default function Home() {
                         sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] min-w-[220px] sm:min-w-[260px] md:min-w-0 md:basis-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
+                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
                       <Image
                         src="/frame-52.png"
                         alt="Build journal image 3"
