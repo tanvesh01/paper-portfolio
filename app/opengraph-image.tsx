@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+export const runtime = "edge";
 
 export const size = {
   width: 1200,
@@ -12,9 +11,9 @@ export const contentType = "image/png";
 export const alt = "Tanvesh - Engineer and Designer";
 
 export default async function Image() {
-  const departureMono = await readFile(
-    join(process.cwd(), "app/fonts/DepartureMono-Regular.woff"),
-  );
+  const departureMono = await fetch(
+    new URL("./fonts/DepartureMono-Regular.woff", import.meta.url),
+  ).then((response) => response.arrayBuffer());
 
   return new ImageResponse(
     <div
