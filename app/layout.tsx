@@ -39,7 +39,7 @@ const departureMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tanvesh.com"),
+  metadataBase: new URL("https://tanvesh.vercel.app"),
   title: "Tanvesh - Engineer and Designer",
   description:
     "I'm an engineer and designer. I build software with a strong focus on aesthetics and how things work.",
