@@ -36,7 +36,7 @@ function Tooltip({
             asChild
           >
             <motion.div
-              className="z-50 overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 p-1  shadow-md text-sm text-black"
+              className="z-50 overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 p-1 text-sm text-black shadow-md"
               initial={{ opacity: 0, y: 6, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
@@ -50,4 +50,31 @@ function Tooltip({
   );
 }
 
-export { Tooltip, TooltipProvider };
+interface SimpleTooltipProps {
+  content: string;
+  children: React.ReactNode;
+  side?: "top" | "right" | "bottom" | "left";
+  align?: "start" | "center" | "end";
+  delayDuration?: number;
+}
+
+function SimpleTooltip({
+  content,
+  children,
+  side = "top",
+  align = "center",
+  delayDuration = 100,
+}: SimpleTooltipProps) {
+  return (
+    <Tooltip
+      content={<p className="font-departure text-xs uppercase">{content}</p>}
+      side={side}
+      align={align}
+      delayDuration={delayDuration}
+    >
+      {children}
+    </Tooltip>
+  );
+}
+
+export { Tooltip, SimpleTooltip, TooltipProvider };

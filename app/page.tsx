@@ -1,341 +1,381 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { AsciiCursorEffect } from "@/components/ascii-cursor-effect";
 import { GridPattern } from "@/components/ui/grid-pattern";
-import { MountainPattern } from "@/components/ui/mountain-pattern";
-import FollowAliceWork from "@/app/components/work/FollowAliceWork";
-import DukaanWork from "./components/work/DukaanWork";
-import { InteractiveCard } from "@/components/ui/interactive-card";
-import { MorphSurface } from "@/components/ui/morph-surface";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
-import { Tooltip } from "@/components/ui/tooltip";
+import { SimpleTooltip } from "@/components/ui/tooltip";
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded"
+        className="focus:bg-primary sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
       <h1 className="sr-only">Tanvesh - Engineer and Designer</h1>
-      <nav className="fixed top-0 left-0 w-full z-20 p-6 flex">
-        <p className="font-mono text-white font-medium uppercase">Tanvesh</p>
-        <a
-          href="/blog"
-          className="font-mono text-white font-medium uppercase hover:text-primary transition-colors"
-        >
-          Writing
-        </a>
-      </nav>
-      <div className="relative min-h-[200vh] bg-white  selection:bg-primary selection:text-white">
-        <section className="relative h-[120vh] w-full flex flex-col  overflow-hidden text-white">
-          <div ref={heroRef} className="absolute inset-0 -top-20   z-0 h-full">
-            <Image
-              src="/frame-52.png"
-              alt="Mountain landscape of Mt. Thamserku in Nepal with snow-capped peaks"
-              fill
-              className="object-cover"
-              priority
-              quality={100}
-              sizes="100vw"
-            />
-            <AsciiCursorEffect
-              imageUrl="/frame-52.png"
-              containerRef={heroRef}
-              radius={125}
-              gridSize={14}
-            />
-            <div className="absolute bg-gradient-to-t from-white to-transparent z-5 h-80 bottom-0 w-full flex flex-col justify-end text-primary font-mono items-center uppercase">
-              <p>Mt. Thamserku, Nepal</p>
-              <p>27.79028°N 86.78750°E</p>
+
+      <div className="selection:bg-primary relative bg-white selection:text-white">
+        <section className="mx-auto flex w-full max-w-7xl flex-col px-8 pt-12 md:border md:px-12 md:pt-24">
+          <div className="w-full max-w-4xl">
+            <div className="mb-12 flex items-center gap-4">
+              <div className="relative h-14 w-14 overflow-hidden rounded-full border border-neutral-200">
+                <Image
+                  src="/profile-picture.png"
+                  alt="Tanvesh profile picture"
+                  fill
+                  className="object-cover"
+                  sizes="56px"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h2 className="text-primary font-departure text-2xl font-bold uppercase">
+                  Tanvesh
+                </h2>
+                <div className="font-departure z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                  is looking for work!
+                </div>
+              </div>
             </div>
+            <main
+              id="main"
+              className="mt-4 mb-4 flex flex-col gap-4 font-mono text-neutral-800 uppercase md:max-w-4/5"
+            >
+              <p className="text-sm md:text-base">
+                I&apos;m an engineer and designer. I build software with a
+                strong focus on aesthetics and how things work. I&apos;m
+                interested in the craft behind everything.
+              </p>
+
+              <p className="text-sm md:text-base">
+                I run ultra marathons and I&apos;m training to become a
+                professional athlete. I take photographs and explore visual
+                culture.
+              </p>
+
+              <p className="text-sm md:text-base">
+                Currently based in Bengaluru, working remotely and traveling
+                through Southeast Asia when I can.
+              </p>
+            </main>
+
+            <a
+              href="https://cal.com/tanvesh01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary hover:bg-primary/90 relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 font-mono text-sm text-white uppercase transition-colors md:border-b-0"
+            >
+              <GridPattern />
+              Get in touch
+            </a>
           </div>
-
-          <main
-            id="main"
-            className="relative z-10 pt-72 font-departure text-white uppercase flex flex-col gap-4 max-w-3xl mx-auto text-xl [text-shadow:_0_2px_8px_rgb(0_0_0_/_40%)]"
-          >
-            <p>
-              I&apos;m an engineer and designer. I build software with a strong
-              focus on aesthetics and how things work. I&apos;m interested in
-              the craft behind everything. <br />
-            </p>
-
-            <p>
-              I run ultra marathons and I&apos;m training to become a
-              professional athlete. I take photographs and explore visual
-              culture.
-            </p>
-
-            <p>
-              Currently based in Bengaluru, working remotely and traveling
-              through Southeast Asia when I can.
-            </p>
-          </main>
         </section>
-        <div className="h-40 relative ">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-white/0 z-10 h-40"></div>
-          <GridPattern
-            variant="diagonal"
-            className="text-blue-500/80"
-            opacity={0.15}
-          />
-        </div>
-        <div className=" w-full ">
-          <div className=" p-4 max-w-[80%] mx-auto md:shadow-[0px_1px_4px_1px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(0,0,0,0.50),0px_-1px_1px_1px_#FFF_inset]">
-            <div className="space-y-8">
-              <div>
-                <h2 className="uppercase font-departure text-2xl text-primary">
-                  Work
-                </h2>
-                <p className="font-mono text-neutral-600 text-sm uppercase">
-                  Places I&apos;ve been, things I&apos;ve learnt
-                </p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <FollowAliceWork />
-                <DukaanWork />
-              </div>
-            </div>
-            <div className="space-y-8 pt-10 border-t border-primary-border">
-              <div>
-                <h2 className="uppercase font-departure text-3xl text-primary">
-                  Work
-                </h2>
-                <p className="font-mono text-neutral-600 text-sm uppercase">
-                  Places I{"'"}ve been, things I{"'"}ve learnt
-                </p>
-              </div>
-              <div className="space-y-10 mt-8">
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="uppercase font-departure text-xl text-primary">
-                      Followalice{" "}
-                      <span className="font-mono text-sm text-neutral-600 uppercase">
-                        OCT 2022 - PRESENT
-                      </span>
-                    </h3>
 
-                    <p className="font-mono text-sm text-black uppercase">
-                      Engineer + Design
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
-                      <p className="font-sans text-neutral-800 text-sm max-w-md mt-4">
-                        <span className="font-ibm-plex-serif"> A </span>{" "}
-                        boutique adventure operator running small-group
-                        expeditions to Kilimanjaro, Everest Base Camp, and
-                        safaris across East Africa.
+        <div className="w-full">
+          <div className="relative">
+            <div className="mx-auto max-w-7xl border p-8 md:mt-4 md:pl-12">
+              <div className="space-y-8 pt-12 md:pt-24">
+                <div>
+                  <h2 className="text-primary font-departure text-2xl font-bold uppercase">
+                    Work
+                  </h2>
+                  {/*<p className="font-mono text-sm text-neutral-600 uppercase">
+                    Places I&apos;ve been, things I&apos;ve learnt
+                  </p>*/}
+                </div>
+                <div className="mt-12 space-y-24">
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://followalice.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
+                            Followalice
+                          </h3>
+                        </a>
+                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                          OCT 2022 - PRESENT
+                        </span>
+                      </div>
+
+                      <p className="font-mono text-sm text-black uppercase">
+                        Engineer + Design{" "}
                       </p>
-                      <p className="font-sans text-neutral-600 text-sm max-w-md mt-4">
-                        Built the end-to-end self-checkout experience, covering
-                        trip selection, payments, and post-booking dashboards.
-                        Designed and implemented an Airbnb-inspired self-booking
-                        flow for trips. Currently working on a back-office app
-                        to help on-ground and remote teams operate more
-                        efficiently.
-                      </p>
+                      <div className="mt-6 flex flex-col gap-12 md:flex-row">
+                        <p className="font-sans text-sm text-neutral-800 md:w-sm">
+                          A boutique adventure operator running small-group
+                          expeditions to Kilimanjaro, Everest Base Camp, and
+                          safaris across East Africa.
+                        </p>
+                        <p className="max-w-md font-sans text-sm text-neutral-600">
+                          Built the end-to-end self-checkout experience,
+                          covering trip selection, payments, and post-booking
+                          dashboards. Designed and implemented an
+                          Airbnb-inspired self-booking flow for trips. Currently
+                          working on a back-office app to help on-ground and
+                          remote teams operate more efficiently.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="scrollbar-hide mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                      <AutoplayVideo
+                        src="/followalice.mp4"
+                        containerClassName="relative shadow-md aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0  lg:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 snap-start"
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md hover:border-neutral-300">
+                        <SimpleTooltip content="Designed and Built a self-checkout system">
+                          <Image
+                            src="/self-checkout-fa.png"
+                            alt="Field notes image 2"
+                            fill
+                            className="object-cover"
+                            quality={100}
+                            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                          />
+                        </SimpleTooltip>
+                      </div>
+                      <div className="hover:border-neutral- relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md">
+                        <SimpleTooltip content="Hiking to Everest Base camp with Followalice on ground sherpas">
+                          <Image
+                            src="/nepal-fa.jpg"
+                            alt="Walking in Nepal"
+                            fill
+                            className="object-cover"
+                            quality={100}
+                            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                          />
+                        </SimpleTooltip>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
-                    <AutoplayVideo
-                      src="/followalice.mp4"
-                      containerClassName="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 snap-start"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-100 hover:border-neutral-300 snap-start">
-                      <Tooltip
-                        content={
-                          <p className="font-departure uppercase text-xs max-w-xs">
-                            Designed and Built a self-checkout system
-                          </p>
-                        }
-                        side="top"
-                        align="center"
-                        delayDuration={100}
-                      >
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://neroeditor.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
+                            Nero Editor
+                          </h3>
+                        </a>
+                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                          2025
+                        </span>
+                      </div>
+                      <p className="font-mono text-sm text-black uppercase">
+                        Creator
+                      </p>
+                      <div className="mt-6 flex flex-col gap-12 pb-4 md:flex-row">
+                        <p className="font-sans text-sm text-neutral-800 md:w-sm">
+                          An infinite canvas for black and white image
+                          exploration.
+                        </p>
+                        <p className="max-w-md font-sans text-sm text-neutral-600">
+                          Nero converts color images in real time using
+                          GPU-accelerated luminance mapping, with expressive
+                          effects like dithering and paper texture overlays.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
+                        <SimpleTooltip content="Nero gets out of your way">
+                          <Image
+                            src="/nero-canvas.png"
+                            alt="Nero canvas UI showing infinite workspace"
+                            fill
+                            className="object-cover"
+                            quality={90}
+                            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                          />
+                        </SimpleTooltip>
+                      </div>
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
+                        <SimpleTooltip content="Straight out of Nero. Picture taken by me in Nepal">
+                          <Image
+                            src="/nero-export.png"
+                            alt="Nero export options"
+                            fill
+                            className="object-cover"
+                            quality={90}
+                            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                          />
+                        </SimpleTooltip>
+                      </div>
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
+                        <SimpleTooltip content="Fine grained controls for every image">
+                          <Image
+                            src="/nero-panel.png"
+                            alt="Nero control panel"
+                            fill
+                            className="object-cover"
+                            quality={90}
+                            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                          />
+                        </SimpleTooltip>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://www.tickadoo.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
+                            Tickadoo
+                          </h3>
+                        </a>
+                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                          2024
+                        </span>
+                      </div>
+
+                      <p className="font-mono text-sm text-black uppercase">
+                        Contractual work
+                      </p>
+                      <div className="flex flex-col gap-12 pb-4 md:flex-row">
+                        <p className="mt-4 font-sans text-sm text-neutral-800 md:w-sm">
+                          Map-based experiences for global event discovery.
+                        </p>
+                        <p className="mt-4 max-w-md font-sans text-sm text-neutral-600">
+                          Worked on interactive maps used to browse and discover
+                          events across cities, with a focus on performance,
+                          usability, and handling location-based data at scale.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
                         <Image
-                          src="/self-checkout-fa.png"
-                          alt="Field notes image 2"
+                          src="/tickadoo-top.png"
+                          alt="Tickadoo map experience"
                           fill
                           className="object-cover"
-                          quality={100}
+                          quality={90}
                           sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                         />
-                      </Tooltip>
-                    </div>
-                    <div className="relative shadow-md aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] overflow-hidden border border-neutral-100 hover:border-neutral- snap-start">
-                      <Tooltip
-                        content={
-                          <p className="font-departure uppercase text-xs ">
-                            Hiking to Everest Base camp with Followalice on
-                            ground sherpas
-                          </p>
-                        }
-                        side="top"
-                        align="center"
-                        delayDuration={100}
-                      >
+                      </div>
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
                         <Image
-                          src="/nepal-fa.jpg"
-                          alt="Walking in Nepal"
+                          src="/tickadoo-bottom.png"
+                          alt="Tickadoo event discovery interface"
                           fill
-                          className="object-cover "
-                          quality={100}
+                          className="object-cover"
+                          quality={90}
                           sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                         />
-                      </Tooltip>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="uppercase font-departure text-lg text-primary">
-                      Nero
-                    </h3>
-                    <p className="font-mono text-sm text-black uppercase">
-                      Creator
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
-                      <p className="font-sans text-neutral-800 text-sm max-w-md mt-4">
-                        An infinite canvas for black and white image
-                        exploration.
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://shundo.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
+                            Shundo
+                          </h3>
+                        </a>
+                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                          2023
+                        </span>
+                      </div>
+                      <p className="font-mono text-sm text-black uppercase">
+                        Creator
                       </p>
-                      <p className="font-sans text-neutral-600 text-sm max-w-md mt-4">
-                        Nero converts color images in real time using
-                        GPU-accelerated luminance mapping, with expressive
-                        effects like dithering and paper texture overlays.
+                      <div className="flex flex-col gap-12 pb-4 md:flex-row">
+                        <p className="mt-4 font-sans text-sm text-neutral-800 md:w-sm">
+                          A productivity app built for Windows with a strong
+                          focus on speed and keyboard-first workflows.
+                        </p>
+                        <p className="mt-4 max-w-md font-sans text-sm text-neutral-600">
+                          Shundo includes lightning-fast file search, a natural
+                          language calculator for quick conversions, and instant
+                          access to recent VS Code projects. Built using Tauri
+                          and Rust with an emphasis on performance and low
+                          system overhead.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                      <div className="border-primary-border relative aspect-video w-[85vw] min-w-[85vw] flex-shrink-0 snap-start overflow-hidden rounded-md border bg-white/80 md:w-[400px] md:min-w-[400px]">
+                        <Image
+                          src="/shundo-cover.png"
+                          alt="Travel studies image 1"
+                          fill
+                          className="object-cover"
+                          quality={90}
+                          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                        />
+                      </div>
+                      <div className="border-primary-border relative aspect-[4/3] w-[75vw] min-w-[75vw] flex-shrink-0 snap-start overflow-hidden rounded-md border bg-white/80 md:w-[340px] md:min-w-[340px]">
+                        <Image
+                          src="/shundo-bento.png"
+                          alt="Travel studies image 2"
+                          fill
+                          className="object-cover"
+                          quality={90}
+                          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://mydukaan.io/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
+                            myDukaan
+                          </h3>
+                        </a>
+                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                          March 2022 - Sep 2022
+                        </span>
+                      </div>
+
+                      <p className="font-mono text-sm text-black uppercase">
+                        Engineer
                       </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/nero-canvas.png"
-                        alt="Nero canvas UI showing infinite workspace"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/nero-cover.png"
-                        alt="Nero cover screen"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/nero-export.png"
-                        alt="Nero export options"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/nero-panel.png"
-                        alt="Nero control panel"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="uppercase font-departure text-lg text-primary">
-                      Travel Studies
-                    </h3>
-                    <p className="font-mono text-neutral-600 text-sm uppercase">
-                      Light, texture, and pace across new terrain.
-                    </p>
-                  </div>
-                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Travel studies image 1"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Travel studies image 2"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Travel studies image 3"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="uppercase font-departure text-lg text-primary">
-                      Build Journal
-                    </h3>
-                    <p className="font-mono text-neutral-600 text-sm uppercase">
-                      Interfaces, prototypes, and unfinished ideas.
-                    </p>
-                  </div>
-                  <div className="flex gap-4 overflow-x-auto md:flex-nowrap pb-2 md:pb-0 snap-x snap-mandatory scrollbar-hide">
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Build journal image 1"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Build journal image 2"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
-                    </div>
-                    <div className="relative aspect-[4/3] w-[280px] min-w-[280px] flex-shrink-0 md:w-auto md:min-w-0 md:flex-1 md:max-w-[360px] rounded-md overflow-hidden border border-primary-border bg-white/80 snap-start">
-                      <Image
-                        src="/frame-52.png"
-                        alt="Build journal image 3"
-                        fill
-                        className="object-cover"
-                        quality={90}
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
-                      />
+                      <div className="flex flex-col gap-12 pb-4 md:flex-row">
+                        <p className="mt-4 font-sans text-sm text-neutral-800 md:w-sm">
+                          A no-code commerce platform helping India&apos;s 100+
+                          million small businesses build an online presence and
+                          accept payments.
+                        </p>
+                        <p className="mt-4 max-w-md font-sans text-sm text-neutral-600">
+                          Worked on the seller dashboard with a focus on
+                          payments and delivery workflows. Led internal dev
+                          tooling work to improve build times by around 80%
+                          across the codebase.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -343,6 +383,74 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <footer className="font-departure mt-24 bg-white py-12">
+          <div className="mx-auto max-w-7xl px-8 md:px-12">
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black">
+                SEE SOME OF MY OPEN SOURCE WORK HERE!
+              </div>
+              <a
+                href="https://github.com/tanvesh01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                GitHub
+              </a>
+            </div>
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                I also write opinions on twitter
+              </div>
+              <a
+                href="https://x.com/Sarve___tanvesh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                Twitter
+              </a>
+            </div>
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                Book a call with me :)
+              </div>
+              <a
+                href="https://cal.com/tanvesh01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                Calendly
+              </a>
+            </div>
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                Here's my resume, if you are into that
+              </div>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                Resume
+              </a>
+            </div>
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                Reach out if I can help with anything. I am looking for work!
+              </div>
+              <a
+                href="mailto:sarvetanvesh01@gmail.com"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                Email
+              </a>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
