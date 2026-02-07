@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -73,6 +74,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} ${ibmPlexSerif.variable} antialiased`}
       >
         <InteractiveCardProvider>{children}</InteractiveCardProvider>
+        <Analytics />
       </body>
     </html>
   );
