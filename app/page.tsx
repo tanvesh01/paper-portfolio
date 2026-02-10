@@ -51,8 +51,8 @@ export default function Home() {
 
               <p className="text-sm md:text-base">
                 I run ultra marathons and I&apos;m training to become a
-                professional athlete. I take photographs and explore visual
-                culture.
+                professional athlete. <br /> I take photographs and explore
+                visual culture.
               </p>
 
               <p className="text-sm md:text-base">
