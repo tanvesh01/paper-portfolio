@@ -62,9 +62,7 @@ export default function Home() {
             </main>
 
             <a
-              href="https://cal.com/tanvesh01"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="bg-primary hover:bg-primary/90 relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 font-mono text-sm text-white uppercase transition-colors md:border-b-0"
             >
               <GridPattern />
@@ -384,7 +382,7 @@ export default function Home() {
           </div>
         </div>
 
-        <footer className="font-departure mt-24 bg-white py-12">
+        <footer id="contact" className="font-departure mt-24 bg-white py-12">
           <div className="mx-auto max-w-7xl px-8 md:px-12">
             <div className="mb-4 flex flex-col gap-1">
               <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black">
