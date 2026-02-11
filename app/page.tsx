@@ -112,12 +112,10 @@ export default function Home() {
                           safaris across East Africa.
                         </p>
                         <p className="max-w-md font-sans text-sm text-neutral-600">
-                          Built the end-to-end self-checkout experience,
-                          covering trip selection, payments, and post-booking
-                          dashboards. Designed and implemented an
-                          Airbnb-inspired self-booking flow for trips. Currently
-                          working on a back-office app to help on-ground and
-                          remote teams operate more efficiently.
+                          Built the self-checkout experience, covering trip
+                          selection, payments, and post-booking dashboards.
+                          Currently working on a back office app to help on
+                          ground and remote teams operate more efficiently.
                         </p>
                       </div>
                     </div>
