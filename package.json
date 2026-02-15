@@ -12,6 +12,7 @@
     "node": "24.x"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",

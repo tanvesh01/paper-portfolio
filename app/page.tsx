@@ -4,6 +4,7 @@ import Image from "next/image";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
 import { SimpleTooltip } from "@/components/ui/tooltip";
+import { CarouselWithArrows } from "@/components/ui/carousel-with-arrows";
 
 export default function Home() {
   return (
@@ -91,7 +92,7 @@ export default function Home() {
                           href="https://followalice.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Followalice
@@ -119,7 +120,7 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                    <div className="scrollbar-hide mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                    <CarouselWithArrows className="mt-12">
                       <AutoplayVideo
                         src="/followalice.mp4"
                         containerClassName="relative shadow-md aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0  lg:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 snap-start"
@@ -149,7 +150,7 @@ export default function Home() {
                           />
                         </SimpleTooltip>
                       </div>
-                    </div>
+                    </CarouselWithArrows>
                   </div>
 
                   <div className="space-y-4">
@@ -159,7 +160,7 @@ export default function Home() {
                           href="https://neroeditor.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Nero Editor
@@ -184,7 +185,7 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                    <CarouselWithArrows className="mt-8">
                       <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
                         <SimpleTooltip content="Nero gets out of your way">
                           <Image
@@ -221,7 +222,7 @@ export default function Home() {
                           />
                         </SimpleTooltip>
                       </div>
-                    </div>
+                    </CarouselWithArrows>
                   </div>
 
                   <div className="space-y-4">
@@ -231,7 +232,7 @@ export default function Home() {
                           href="https://www.tickadoo.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Tickadoo
@@ -256,7 +257,7 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                    <CarouselWithArrows className="mt-8">
                       <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden rounded-md border border-neutral-100 bg-white/80">
                         <Image
                           src="/tickadoo-top.png"
@@ -277,7 +278,7 @@ export default function Home() {
                           sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                         />
                       </div>
-                    </div>
+                    </CarouselWithArrows>
                   </div>
 
                   <div className="space-y-4">
@@ -287,7 +288,7 @@ export default function Home() {
                           href="https://shundo.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Shundo
@@ -314,7 +315,7 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                    <div className="scrollbar-hide mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-nowrap md:pb-0">
+                    <CarouselWithArrows className="mt-8">
                       <div className="border-primary-border relative aspect-video w-[85vw] min-w-[85vw] flex-shrink-0 snap-start overflow-hidden rounded-md border bg-white/80 md:w-[400px] md:min-w-[400px]">
                         <Image
                           src="/shundo-cover.png"
@@ -335,7 +336,7 @@ export default function Home() {
                           sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 80vw"
                         />
                       </div>
-                    </div>
+                    </CarouselWithArrows>
                   </div>
 
                   <div className="space-y-4">
@@ -345,7 +346,7 @@ export default function Home() {
                           href="https://mydukaan.io/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             myDukaan
