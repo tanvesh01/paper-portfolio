@@ -438,6 +438,19 @@ export default function Home() {
             </div>
             <div className="mb-4 flex flex-col gap-1">
               <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                Here's my resume
+              </div>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-black underline transition-colors"
+              >
+                Resume
+              </a>
+            </div>
+            <div className="mb-4 flex flex-col gap-1">
+              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
                 I also write opinions on twitter
               </div>
               <a
@@ -462,19 +475,7 @@ export default function Home() {
                 Calendly
               </a>
             </div>
-            <div className="mb-4 flex flex-col gap-1">
-              <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
-                Here's my resume, if you are into that
-              </div>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary text-black underline transition-colors"
-              >
-                Resume
-              </a>
-            </div>
+
             <div className="mb-4 flex flex-col gap-1">
               <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
                 Reach out if I can help with anything. I am looking for work!
