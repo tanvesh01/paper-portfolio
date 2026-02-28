@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             <main
               id="main"
-              className="mt-4 mb-4 flex flex-col gap-4 font-mono text-neutral-800 uppercase md:max-w-4/5"
+              className="mt-4 mb-4 flex flex-col gap-4 font-sans text-neutral-800 md:max-w-3/5"
             >
               <p className="text-sm md:text-base">
                 I&apos;m an engineer and designer. I build software with a
@@ -64,7 +64,7 @@ export default function Home() {
 
             <a
               href="#contact"
-              className="bg-primary hover:bg-primary/90 relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 font-mono text-sm text-white uppercase transition-colors md:border-b-0"
+              className="bg-primary hover:bg-primary/90 font-departure relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
             >
               <GridPattern />
               Get in touch
@@ -92,13 +92,13 @@ export default function Home() {
                           href="https://followalice.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Followalice
                           </h3>
                         </a>
-                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
                           OCT 2022 - PRESENT
                         </span>
                       </div>
@@ -160,13 +160,13 @@ export default function Home() {
                           href="https://neroeditor.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Nero Editor
                           </h3>
                         </a>
-                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
                           2025
                         </span>
                       </div>
@@ -232,13 +232,13 @@ export default function Home() {
                           href="https://www.tickadoo.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Tickadoo
                           </h3>
                         </a>
-                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
                           2024
                         </span>
                       </div>
@@ -288,13 +288,13 @@ export default function Home() {
                           href="https://shundo.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Shundo
                           </h3>
                         </a>
-                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
                           2023
                         </span>
                       </div>
@@ -346,13 +346,13 @@ export default function Home() {
                           href="https://mydukaan.io/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             myDukaan
                           </h3>
                         </a>
-                        <span className="font-mono text-xs text-neutral-600 uppercase">
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
                           March 2022 - Sep 2022
                         </span>
                       </div>
@@ -371,6 +371,46 @@ export default function Home() {
                           payments and delivery workflows. Led internal dev
                           tooling work to improve build times by around 80%
                           across the codebase.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-baseline md:gap-12">
+                        <a
+                          href="https://wrky.ai/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="decoration-primary underline decoration-dotted underline-offset-4 transition-opacity hover:opacity-70"
+                        >
+                          <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
+                            Wrky.ai
+                          </h3>
+                        </a>
+                        <span className="font-mono text-sm text-neutral-600 uppercase">
+                          OCT 2020 - MAR 2022
+                        </span>
+                      </div>
+
+                      <p className="font-mono text-sm text-black uppercase">
+                        Frontend Engineer
+                      </p>
+                      <div className="flex flex-col gap-12 pb-4 md:flex-row">
+                        <p className="mt-4 font-sans text-sm text-neutral-800 md:w-sm">
+                          Built a web app from scratch for assessment workflows,
+                          used by thousands of candidates and HR teams to manage
+                          hiring pipelines end to end.
+                        </p>
+                        <p className="mt-4 max-w-md font-sans text-sm text-neutral-600">
+                          Built with Next.js and TypeScript, with GraphQL Code
+                          Generator and React Query for type-safe frontend and
+                          backend integration. Implemented server-side
+                          prefetching to eliminate first-load waiting states,
+                          and built a reusable component library with a design
+                          system using Stitches to speed up delivery of new
+                          pages.
                         </p>
                       </div>
                     </div>
