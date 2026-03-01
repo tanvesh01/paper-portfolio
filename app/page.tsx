@@ -18,7 +18,7 @@ export default function Home() {
       <h1 className="sr-only">Tanvesh - Engineer and Designer</h1>
 
       <div className="selection:bg-primary relative bg-white selection:text-white">
-        <section className="mx-auto w-full max-w-7xl border border-x-0 border-t-0">
+        <section className="mx-auto w-full max-w-7xl border border-t-0 border-r-0">
           <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,44%)] md:items-stretch">
             <div className="w-full max-w-4xl px-8 pt-12 md:px-12 md:pt-24">
               <div className="mb-12 flex items-center gap-4">
