@@ -18,57 +18,71 @@ export default function Home() {
       <h1 className="sr-only">Tanvesh - Engineer and Designer</h1>
 
       <div className="selection:bg-primary relative bg-white selection:text-white">
-        <section className="mx-auto flex w-full max-w-7xl flex-col px-8 pt-12 md:border md:px-12 md:pt-24">
-          <div className="w-full max-w-4xl">
-            <div className="mb-12 flex items-center gap-4">
-              <div className="relative h-14 w-14 overflow-hidden rounded-full border border-neutral-200">
-                <Image
-                  src="/profile-picture.png"
-                  alt="Tanvesh profile picture"
-                  fill
-                  className="object-cover"
-                  sizes="56px"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <h2 className="text-primary font-departure text-2xl font-bold uppercase">
-                  Tanvesh
-                </h2>
-                <div className="font-departure z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
-                  is looking for work!
+        <section className="mx-auto w-full max-w-7xl border border-x-0 border-t-0">
+          <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,44%)] md:items-stretch">
+            <div className="w-full max-w-4xl px-8 pt-12 md:px-12 md:pt-24">
+              <div className="mb-12 flex items-center gap-4">
+                <div className="relative h-14 w-14 overflow-hidden rounded-full border border-neutral-200">
+                  <Image
+                    src="/profile-picture.png"
+                    alt="Tanvesh profile picture"
+                    fill
+                    className="object-cover"
+                    sizes="56px"
+                    priority
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-primary font-departure text-2xl font-bold uppercase">
+                    Tanvesh
+                  </h2>
+                  <div className="font-departure z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
+                    is looking for work!
+                  </div>
                 </div>
               </div>
+              <main
+                id="main"
+                className="mt-4 mb-4 flex flex-col gap-4 font-sans text-neutral-800"
+              >
+                <p className="text-sm md:text-base">
+                  I&apos;m an engineer and designer. I build software with a
+                  strong focus on aesthetics and how things work. I&apos;m
+                  interested in the craft behind everything.
+                </p>
+
+                <p className="text-sm md:text-base">
+                  I run ultra marathons and I&apos;m training to become a
+                  professional athlete. <br /> I take photographs and explore
+                  visual culture.
+                </p>
+
+                <p className="text-sm md:text-base">
+                  Currently based in Bengaluru, working remotely and traveling
+                  through Southeast Asia when I can.
+                </p>
+              </main>
+
+              <a
+                href="#contact"
+                className="bg-primary hover:bg-primary/90 font-departure relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
+              >
+                <GridPattern />
+                Get in touch
+              </a>
             </div>
-            <main
-              id="main"
-              className="mt-4 mb-4 flex flex-col gap-4 font-sans text-neutral-800 md:max-w-3/5"
-            >
-              <p className="text-sm md:text-base">
-                I&apos;m an engineer and designer. I build software with a
-                strong focus on aesthetics and how things work. I&apos;m
-                interested in the craft behind everything.
-              </p>
 
-              <p className="text-sm md:text-base">
-                I run ultra marathons and I&apos;m training to become a
-                professional athlete. <br /> I take photographs and explore
-                visual culture.
-              </p>
-
-              <p className="text-sm md:text-base">
-                Currently based in Bengaluru, working remotely and traveling
-                through Southeast Asia when I can.
-              </p>
-            </main>
-
-            <a
-              href="#contact"
-              className="bg-primary hover:bg-primary/90 font-departure relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
-            >
-              <GridPattern />
-              Get in touch
-            </a>
+            <div className="relative min-h-[320px] w-full overflow-hidden bg-neutral-50 md:h-full">
+              <Image
+                src="/exp_cover.png"
+                alt="Blue mountain artwork overlaid with code"
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 1024px) 44vw, (min-width: 768px) 42vw, 100vw"
+                quality={100}
+              />
+            </div>
           </div>
         </section>
 
