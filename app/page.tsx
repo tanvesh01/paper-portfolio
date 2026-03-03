@@ -20,8 +20,8 @@ export default function Home() {
       <div className="selection:bg-primary relative bg-white selection:text-white">
         <section className="mx-auto w-full max-w-7xl border border-t-0 border-r-0">
           <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,44%)] md:items-stretch">
-            <div className="w-full max-w-4xl px-8 pt-12 md:px-12 md:pt-24">
-              <div className="mb-12 flex items-center gap-4">
+            <div className="w-full max-w-4xl px-8 pt-12 md:px-12">
+              <div className="mb-8 flex items-center gap-4">
                 <div className="relative h-14 w-14 overflow-hidden rounded-full border border-neutral-200">
                   <Image
                     src="/profile-picture.png"
@@ -65,7 +65,7 @@ export default function Home() {
 
               <a
                 href="#contact"
-                className="bg-primary hover:bg-primary/90 font-departure relative mt-4 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
+                className="bg-primary hover:bg-primary/90 font-departure relative mt-8 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
               >
                 <GridPattern />
                 Get in touch
