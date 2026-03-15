@@ -172,10 +172,10 @@ function Dock({
 
   return (
     <footer
-      className="flex items-center justify-center select-none whitespace-nowrap mt-auto h-[44px] cursor-pointer"
+      className="flex items-center justify-center select-none whitespace-nowrap mt-auto h-[44px] cursor-pointer w-full"
       onClick={openFeedback}
     >
-      <div className="flex items-center justify-center gap-6 px-3 max-sm:h-10 max-sm:px-2">
+      <div className="flex items-center justify-between gap-6 px-3 max-sm:h-10 max-sm:px-2 w-full">
         <div className="flex items-center gap-2 w-fit">
           {showFeedback ? (
             <div className="w-5 h-5" style={{ opacity: 0 }} />
