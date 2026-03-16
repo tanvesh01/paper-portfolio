@@ -29,6 +29,7 @@ import React from "react";
 import { cx } from "class-variance-authority";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { GridPattern } from "@/components/ui/grid-pattern";
+import "./morph-surface.css";
 
 const SPEED = 1;
 const FEEDBACK_WIDTH = 360;
@@ -172,16 +173,16 @@ function Dock({
 
   return (
     <footer
-      className="flex items-center justify-center select-none whitespace-nowrap mt-auto h-[44px] cursor-pointer w-full"
+      className="morph-surface-footer"
       onClick={openFeedback}
     >
-      <div className="flex items-center justify-between gap-6 px-3 max-sm:h-10 max-sm:px-2 w-full">
-        <div className="flex items-center gap-2 w-fit">
+      <div className="morph-surface-footer-inner">
+        <div className="morph-surface-logo">
           {showFeedback ? (
-            <div className="w-5 h-5" style={{ opacity: 0 }} />
+            <div className="morph-surface-icon" style={{ opacity: 0 }} />
           ) : (
             <motion.div
-              className="w-5 h-5 rounded-full text-primary"
+              className="morph-surface-icon"
               // style={{ backgroundColor: "orange" }}
               layoutId="morph-surface-dot"
               // initial={{ filter: "blur(0px)" }}
@@ -207,7 +208,7 @@ function Dock({
             </motion.div>
           )}
         </div>
-        <p className="font-sane text-primary">Some Notable work @followalice</p>
+        <p className="morph-surface-text">Some Notable work @followalice</p>
         {/* {customButton ? (
           <div onClick={openFeedback}>{customButton}</div>
         ) : (

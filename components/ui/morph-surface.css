@@ -1,0 +1,60 @@
+/**
+ * MorphSurface Component Styles
+ *
+ * CSS styles for the MorphSurface footer component
+ * Converted from Tailwind utility classes
+ */
+
+/* Footer container */
+.morph-surface-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  white-space: nowrap;
+  margin-top: auto;
+  height: 44px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Footer inner container */
+.morph-surface-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem; /* gap-6 equivalent */
+  padding-left: 0.75rem; /* px-3 equivalent */
+  padding-right: 0.75rem;
+  width: 100%;
+}
+
+/* Mobile adjustments for inner container */
+@media (max-width: 640px) {
+  .morph-surface-footer-inner {
+    height: 2.5rem; /* h-10 equivalent */
+    padding-left: 0.5rem; /* px-2 equivalent */
+    padding-right: 0.5rem;
+  }
+}
+
+/* Logo/Icon container */
+.morph-surface-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 equivalent */
+  width: fit-content;
+}
+
+/* Icon styles */
+.morph-surface-icon {
+  width: 1.25rem; /* w-5 equivalent */
+  height: 1.25rem; /* h-5 equivalent */
+  border-radius: 9999px; /* rounded-full equivalent */
+}
+
+/* Footer text */
+.morph-surface-text {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-primary);
+}
