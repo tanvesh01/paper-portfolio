@@ -18,7 +18,7 @@ export default function Home() {
       <h1 className="sr-only">Tanvesh - Engineer and Designer</h1>
 
       <div className="selection:bg-primary relative bg-white selection:text-white">
-        <section className="mx-auto w-full max-w-7xl border border-t-0 border-r-0">
+        <section className="mx-auto w-full max-w-7xl md:border md:border-t-0 md:border-r-0">
           <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,44%)] md:items-stretch">
             <div className="w-full max-w-4xl px-8 pt-12 md:px-12">
               <div className="mb-8 flex items-center gap-4">
@@ -65,31 +65,61 @@ export default function Home() {
 
               <a
                 href="#contact"
-                className="bg-primary hover:bg-primary/90 font-departure relative mt-8 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-colors md:border-b-0"
+                className="bg-primary font-departure relative mt-8 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-[background-color,transform] duration-150 ease-out active:scale-[0.97] md:border-b-0 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/90"
               >
                 <GridPattern />
                 Get in touch
               </a>
             </div>
 
-            <div className="relative min-h-[320px] w-full overflow-hidden bg-neutral-50 md:h-full">
+            <div className="relative min-h-[320px] w-full overflow-hidden bg-neutral-100 md:h-full">
               <Image
-                src="/exp_cover.png"
-                alt="Blue mountain artwork overlaid with code"
+                src="/shader-lab-2026-05-09T17-06-15.png"
+                alt=""
                 fill
                 priority
                 className="object-cover"
                 sizes="(min-width: 1024px) 44vw, (min-width: 768px) 42vw, 100vw"
-                quality={100}
               />
+              <a
+                href="https://github.com/tanvesh01/rudu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-departure absolute bottom-4 left-4 z-20 inline-flex items-center gap-2 overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-2 py-1 text-xs text-black uppercase md:bottom-6 md:left-6"
+              >
+                Rudu github
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  className="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
+                  strokeWidth="1.5"
+                >
+                  <path d="M5 3h8v8" />
+                  <path d="M13 3 4 12" />
+                </svg>
+              </a>
+              <div className="absolute right-4 bottom-0 w-[180%] min-w-[760px] max-w-none drop-shadow-[0_24px_60px_rgba(0,0,0,0.28)] md:right-10 md:min-w-[980px]">
+                <Image
+                  src="/rudu-real.png"
+                  alt="Rudu app window"
+                  width={1368}
+                  height={768}
+                  className="h-auto w-full rounded-t-lg"
+                  sizes="(min-width: 1024px) 80vw, (min-width: 768px) 76vw, 760px"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         <div className="w-full">
           <div className="relative">
-            <div className="mx-auto max-w-7xl border p-8 md:mt-4 md:pl-12">
-              <div className="space-y-8 pt-12 md:pt-24">
+            <div className="mx-auto max-w-7xl border px-8 pt-8 pb-8 md:mt-8 md:pl-12">
+              <div className="space-y-8">
                 <div>
                   <h2 className="text-primary font-departure text-2xl font-bold uppercase">
                     Work
@@ -106,7 +136,7 @@ export default function Home() {
                           href="https://followalice.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Followalice
@@ -140,7 +170,7 @@ export default function Home() {
                         containerClassName="relative shadow-md aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0  lg:max-w-[360px] overflow-hidden border border-neutral-200 bg-yellow-100 snap-start"
                         className="h-full w-full object-cover"
                       />
-                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md hover:border-neutral-300">
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:border-neutral-300">
                         <SimpleTooltip content="Designed and Built a self-checkout system">
                           <Image
                             src="/self-checkout-fa.png"
@@ -152,7 +182,7 @@ export default function Home() {
                           />
                         </SimpleTooltip>
                       </div>
-                      <div className="hover:border-neutral- relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md">
+                      <div className="relative aspect-[4/3] w-[340px] min-w-[340px] flex-shrink-0 snap-start overflow-hidden border border-neutral-100 shadow-md transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:border-neutral-300">
                         <SimpleTooltip content="Hiking to Everest Base camp with Followalice on ground sherpas">
                           <Image
                             src="/nepal-fa.jpg"
@@ -174,7 +204,7 @@ export default function Home() {
                           href="https://neroeditor.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Nero Editor
@@ -246,7 +276,7 @@ export default function Home() {
                           href="https://www.tickadoo.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Tickadoo
@@ -302,7 +332,7 @@ export default function Home() {
                           href="https://shundo.app/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-lg uppercase md:w-sm">
                             Shundo
@@ -360,7 +390,7 @@ export default function Home() {
                           href="https://mydukaan.io/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-2 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             myDukaan
@@ -397,7 +427,7 @@ export default function Home() {
                           href="https://wrky.ai/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="decoration-primary underline decoration-dotted underline-offset-4 transition-opacity hover:opacity-70"
+                          className="decoration-primary underline decoration-dotted underline-offset-4 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-70"
                         >
                           <h3 className="text-primary font-mono text-xl uppercase md:w-sm">
                             Wrky.ai
@@ -445,20 +475,20 @@ export default function Home() {
                 href="https://github.com/tanvesh01"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black underline transition-colors"
+                className="text-black underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
               >
                 GitHub
               </a>
             </div>
             <div className="mb-4 flex flex-col gap-1">
               <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
-                Here's my resume
+                Here&apos;s my resume
               </div>
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black underline transition-colors"
+                className="text-black underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
               >
                 Resume
               </a>
@@ -471,7 +501,7 @@ export default function Home() {
                 href="https://x.com/Sarve___tanvesh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black underline transition-colors"
+                className="text-black underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
               >
                 Twitter
               </a>
@@ -484,7 +514,7 @@ export default function Home() {
                 href="https://cal.com/tanvesh01"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary text-black underline transition-colors"
+                className="text-black underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
               >
                 Calendly
               </a>
@@ -496,7 +526,7 @@ export default function Home() {
               </div>
               <a
                 href="mailto:sarvetanvesh01@gmail.com"
-                className="hover:text-primary text-black underline transition-colors"
+                className="text-black underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
               >
                 Email
               </a>
