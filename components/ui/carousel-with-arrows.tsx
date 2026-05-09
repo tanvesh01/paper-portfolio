@@ -44,7 +44,14 @@ export function CarouselWithArrows({
     if (!element) return;
 
     const scrollAmount = direction === "left" ? -354 : 354;
-    element.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    element.scrollBy({
+      left: scrollAmount,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
   };
 
   return (
@@ -58,7 +65,7 @@ export function CarouselWithArrows({
 
       <button
         onClick={() => scroll("left")}
-        className={`absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all duration-200 before:absolute before:inset-[-12px] before:content-[''] md:hidden ${
+        className={`absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-[opacity,transform] duration-200 ease-out active:scale-[0.97] before:absolute before:inset-[-12px] before:content-[''] md:hidden ${
           canScrollLeft ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-label="Scroll left"
@@ -68,7 +75,7 @@ export function CarouselWithArrows({
 
       <button
         onClick={() => scroll("right")}
-        className={`absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all duration-200 before:absolute before:inset-[-12px] before:content-[''] md:hidden ${
+        className={`absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-[opacity,transform] duration-200 ease-out active:scale-[0.97] before:absolute before:inset-[-12px] before:content-[''] md:hidden ${
           canScrollRight ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-label="Scroll right"

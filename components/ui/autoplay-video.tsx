@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface AutoplayVideoProps {
   src: string;
@@ -18,10 +18,12 @@ export function AutoplayVideo({
   slowMotionRate = 0.5,
 }: AutoplayVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+
+  const hasFinePointer = () =>
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
+    if (videoRef.current && hasFinePointer()) {
       videoRef.current.playbackRate = slowMotionRate;
     }
   };
@@ -43,8 +45,6 @@ export function AutoplayVideo({
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        setIsVisible(entry.isIntersecting);
-
         if (entry.isIntersecting && !PAUSE_VIDEO_BY_DEFAULT) {
           videoElement.play().catch((error) => {
             console.warn("Video autoplay failed:", error);
@@ -67,7 +67,7 @@ export function AutoplayVideo({
       <video
         ref={videoRef}
         src={src}
-        className={`${className} cursor-pointer`}
+        className={className}
         muted
         loop
         playsInline

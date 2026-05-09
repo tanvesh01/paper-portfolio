@@ -11,15 +11,19 @@ export default function TagFilter({
   selectedTag,
   onTagSelect,
 }: TagFilterProps) {
+  const getButtonClassName = (isSelected: boolean) =>
+    `px-4 py-2 text-xs font-mono uppercase whitespace-nowrap transition-[background-color,border-color,color,transform] duration-150 ease-out active:scale-[0.97] ${
+      isSelected
+        ? 'border border-primary bg-primary text-white'
+        : 'border border-primary-border text-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:border-primary'
+    }`;
+
   return (
     <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
       <button
         onClick={() => onTagSelect(null)}
-        className={`px-4 py-2 text-xs font-mono uppercase whitespace-nowrap transition-all ${
-          selectedTag === null
-            ? 'bg-primary text-white'
-            : 'border border-primary-border text-foreground hover:border-primary'
-        }`}
+        aria-pressed={selectedTag === null}
+        className={getButtonClassName(selectedTag === null)}
       >
         All
       </button>
@@ -28,11 +32,8 @@ export default function TagFilter({
         <button
           key={tag}
           onClick={() => onTagSelect(tag)}
-          className={`px-4 py-2 text-xs font-mono uppercase whitespace-nowrap transition-all ${
-            selectedTag === tag
-              ? 'bg-primary text-white'
-              : 'border border-primary-border text-foreground hover:border-primary'
-          }`}
+          aria-pressed={selectedTag === tag}
+          className={getButtonClassName(selectedTag === tag)}
         >
           {tag}
         </button>

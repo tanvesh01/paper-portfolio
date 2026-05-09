@@ -54,10 +54,10 @@ export default function ScrollingImages({
         {images.map((image, index) => (
           <div
             key={image}
-            className={`absolute inset-0 transition-all duration-500 ${
+            className={`absolute inset-0 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-opacity ${
               index === activeImageIndex
                 ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-105'
+                : 'opacity-0 scale-[1.03] motion-reduce:scale-100'
             }`}
           >
             <Image

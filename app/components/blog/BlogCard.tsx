@@ -21,7 +21,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group block border border-primary-border hover:border-primary transition-colors duration-300"
+      className="group block border border-primary-border transition-colors duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:border-primary"
     >
       <article className="h-full flex flex-col">
         {/* Featured Image */}
@@ -30,7 +30,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             src={featuredImage}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
@@ -50,7 +50,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h2 className="font-departure text-2xl uppercase text-primary mb-3 group-hover:opacity-80 transition-opacity">
+          <h2 className="font-departure text-2xl uppercase text-primary mb-3 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:group-hover:opacity-80">
             {title}
           </h2>
 

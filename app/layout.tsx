@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { InteractiveCardProvider } from "@/components/ui/interactive-card-context";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,7 +74,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} ${ibmPlexSerif.variable} antialiased`}
       >
-        <InteractiveCardProvider>{children}</InteractiveCardProvider>
+        <TooltipProvider delayDuration={100} skipDelayDuration={0}>
+          <InteractiveCardProvider>{children}</InteractiveCardProvider>
+        </TooltipProvider>
         <Analytics />
       </body>
     </html>

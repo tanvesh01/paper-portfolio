@@ -26,7 +26,7 @@ export default function BlogPostLayout({ post }: BlogPostLayoutProps) {
       <header className="py-24 px-6 max-w-7xl mx-auto">
         <Link
           href="/blog"
-          className="inline-block font-mono text-xs uppercase text-primary hover:opacity-80 mb-12"
+          className="inline-block font-mono text-xs uppercase text-primary mb-12 transition-opacity duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-80"
         >
           ← Back to all posts
         </Link>
@@ -63,7 +63,7 @@ export default function BlogPostLayout({ post }: BlogPostLayoutProps) {
               <Link
                 key={tag}
                 href={`/blog?tag=${encodeURIComponent(tag)}`}
-                className="px-2 py-1 text-xs font-mono uppercase border border-primary-border text-primary hover:bg-primary hover:text-white transition-colors"
+                className="px-2 py-1 text-xs font-mono uppercase border border-primary-border text-primary transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:text-white"
               >
                 {tag}
               </Link>
