@@ -32,14 +32,9 @@ export default function Home() {
                     priority
                   />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <h2 className="text-primary font-departure text-2xl font-bold uppercase">
-                    Tanvesh
-                  </h2>
-                  <div className="font-departure z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
-                    is looking for work!
-                  </div>
-                </div>
+                <h2 className="text-primary font-departure text-2xl font-bold uppercase">
+                  Tanvesh
+                </h2>
               </div>
               <main
                 id="main"
@@ -522,7 +517,7 @@ export default function Home() {
 
             <div className="mb-4 flex flex-col gap-1">
               <div className="z-50 w-fit overflow-hidden border border-dotted border-yellow-300 bg-yellow-100 px-1 text-xs text-black uppercase">
-                Reach out if I can help with anything. I am looking for work!
+                Reach out if I can help with anything.
               </div>
               <a
                 href="mailto:sarvetanvesh01@gmail.com"
