@@ -17,6 +17,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
+    "dialkit": "^2.0.2",
     "flubber": "^0.4.2",
     "framer-motion": "^12.27.0",
     "gray-matter": "^4.0.3",

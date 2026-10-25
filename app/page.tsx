@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
 import { SimpleTooltip } from "@/components/ui/tooltip";
@@ -19,26 +20,38 @@ export default function Home() {
 
       <div className="selection:bg-primary relative bg-white selection:text-white">
         <section className="mx-auto w-full max-w-7xl md:border md:border-t-0 md:border-r-0">
+          <nav
+            aria-label="Primary"
+            className="flex items-center justify-between border-b border-neutral-200 px-8 py-4 md:px-12"
+          >
+            <Link href="/" className="flex items-center gap-3">
+              <span className="relative h-10 w-10 overflow-hidden rounded-full border border-neutral-200">
+                <Image
+                  src="/profile-picture.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  priority
+                />
+              </span>
+              <span className="text-primary font-departure text-lg font-bold uppercase">
+                Tanvesh
+              </span>
+            </Link>
+            <Link
+              href="/experiments"
+              className="text-primary font-departure text-sm uppercase transition-opacity hover:opacity-60"
+            >
+              Experiments
+            </Link>
+          </nav>
+
           <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,44%)] md:items-stretch">
             <div className="w-full max-w-4xl px-8 pt-12 md:px-12">
-              <div className="mb-8 flex items-center gap-4">
-                <div className="relative h-14 w-14 overflow-hidden rounded-full border border-neutral-200">
-                  <Image
-                    src="/profile-picture.png"
-                    alt="Tanvesh profile picture"
-                    fill
-                    className="object-cover"
-                    sizes="56px"
-                    priority
-                  />
-                </div>
-                <h2 className="text-primary font-departure text-2xl font-bold uppercase">
-                  Tanvesh
-                </h2>
-              </div>
               <main
                 id="main"
-                className="mt-4 mb-4 flex flex-col gap-4 font-sans text-neutral-800"
+                className="mb-4 flex flex-col gap-4 font-sans text-neutral-800"
               >
                 <p className="text-sm md:text-base">
                   I&apos;m an engineer and designer. I build software with a
