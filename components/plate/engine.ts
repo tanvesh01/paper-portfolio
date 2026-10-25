@@ -59,11 +59,15 @@ export interface ProceduralParams {
   bandWidth: number;
   /** Overall dot coverage, 0–1. */
   dotDensity: number;
-  /** Dot radius bounds, as a fraction of the short edge. */
-  dotMin: number;
-  dotMax: number;
-  /** How far dots wander from their grid cell, 0–1. */
-  dotJitter: number;
+  /**
+   * Dot radius, as a multiplier on the plate's base range.
+   *
+   * The marks always run from 0.0016 to 0.008 of the short edge — a 5:1 spread from
+   * hairline to solid — and this scales both ends together. Two separate min/max
+   * sliders were one dimension in disguise: the minimum only ever appeared as the
+   * floor of `min + (max - min) * t`, so it could not be seen on its own.
+   */
+  dotScale: number;
   /**
    * How far each mark stretches along the flow, 0–1.
    *
@@ -72,13 +76,8 @@ export interface ProceduralParams {
    * composition, so it is a first-class parameter rather than a constant.
    */
   dotStreak: number;
-  /** How sharply dots concentrate into bands. 1 = soft, 4 = hard-edged bands. */
-  bandContrast: number;
-
   /** Paper grain strength, 0–1. */
   grain: number;
-  /** Fibre strength, 0–1. */
-  fibre: number;
 }
 
 /** Integer hash, used everywhere a deterministic pseudo-random value is needed. */
@@ -300,6 +299,20 @@ interface Dot {
 }
 
 /**
+ * The mark geometry the panel does not expose.
+ *
+ * Each of these was a slider whose range was almost entirely dead: jitter only moved
+ * marks inside their own sampling cell, band contrast was a second exponent on the
+ * curve Band Width already sets, and the fibre pass stroked at 22% soft-light, which
+ * moved no pixels at any setting. They are constants now, at the values the plate was
+ * tuned with.
+ */
+const DOT_MIN = 0.0016;
+const DOT_MAX = 0.008;
+const DOT_JITTER = 0.9;
+const BAND_CONTRAST = 2.2;
+
+/**
  * Dots, clustered into horizontal bands.
  *
  * Points come from a jittered grid, so their spacing is even and their distribution is
@@ -335,22 +348,22 @@ function dotField(
         const d = Math.abs(gy - c) / p.bandWidth;
         envelope = Math.max(envelope, Math.exp(-d * d));
       }
-      envelope = Math.pow(envelope, p.bandContrast);
+      envelope = Math.pow(envelope, BAND_CONTRAST);
       if (envelope < 0.02) continue;
 
       const n = densityNoise(gx, gy);
       const density = envelope * (0.25 + n * 1.35) * p.dotDensity;
       if (ihash(i, j, p.seed + 7919) > density) continue;
 
-      const jx = (ihash(i, j, p.seed + 104729) - 0.5) * spacing * p.dotJitter;
-      const jy = (ihash(i, j, p.seed + 1299709) - 0.5) * spacing * p.dotJitter;
+      const jx = (ihash(i, j, p.seed + 104729) - 0.5) * spacing * DOT_JITTER;
+      const jy = (ihash(i, j, p.seed + 1299709) - 0.5) * spacing * DOT_JITTER;
 
       // Radius follows density, and a second hashed term skews the distribution so most
       // marks are small and a minority are much larger. A uniform radius reads as
       // polka dots; a skewed one reads as a printed field.
       const t = Math.min(1, density / Math.max(p.dotDensity, 0.001));
       const skew = Math.pow(ihash(i, j, p.seed + 15485863), 2.4);
-      const r = p.dotMin + (p.dotMax - p.dotMin) * Math.pow(t, 0.7) * (0.35 + skew * 1.5);
+      const r = (DOT_MIN + (DOT_MAX - DOT_MIN) * Math.pow(t, 0.7) * (0.35 + skew * 1.5)) * p.dotScale;
 
       // Flow direction: the contour direction, which is perpendicular to the field's
       // gradient. Marks laid along it read as following the terrain, the way a hatched
@@ -498,26 +511,6 @@ export function renderProcedural(
     }
   }
 
-  if (p.fibre > 0) {
-    // Fibre: short, low-opacity strokes in the paper direction, seeded so they never
-    // repeat and never change between renders.
-    ctx.save();
-    ctx.globalCompositeOperation = 'soft-light';
-    ctx.strokeStyle = p.ink;
-    ctx.globalAlpha = p.fibre * 0.22;
-    ctx.lineWidth = Math.max(0.4, shortEdge * 0.0012);
-    for (let i = 0; i < 900; i += 1) {
-      const x = ihash(i, 3, p.seed + 9001) * width;
-      const y = ihash(i, 5, p.seed + 9001) * height;
-      const len = (0.01 + ihash(i, 7, p.seed + 9001) * 0.07) * shortEdge;
-      const angle = (ihash(i, 11, p.seed + 9001) - 0.5) * 0.5;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
 }
 
 /** A starting point that resembles a mid-century topographic cover. */
@@ -537,11 +530,7 @@ export const DEFAULT_PARAMS: ProceduralParams = {
   bands: 3,
   bandWidth: 0.16,
   dotDensity: 0.55,
-  dotMin: 0.0016,
-  dotMax: 0.008,
-  dotJitter: 0.9,
+  dotScale: 1,
   dotStreak: 0.8,
-  bandContrast: 2.2,
   grain: 0.5,
-  fibre: 0.5,
 };

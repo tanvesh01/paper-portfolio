@@ -1,16 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PlateStudio from "@/components/plate/PlateStudio";
-// DialKit's own stylesheet, with its remote font import stripped so the panel uses the
-// site's locally served Geist Mono instead of a render-blocking Google Fonts request.
-import "@/app/dialkit.css";
+import { decodeParams } from "@/components/plate/params";
 
 export const metadata: Metadata = {
   title: "Experiments | Tanvesh",
   description: "Deterministic visual experiments with live mathematical controls.",
 };
 
-export default function ExperimentsPage() {
+export default async function ExperimentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  // The plate lives in the URL. Reading it here means a shared link renders correctly on
+  // the first paint, with no client-side restore step.
+  const resolved = await searchParams;
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(resolved)) {
+    if (typeof value === "string") query.set(key, value);
+  }
+
   return (
     <div className="min-h-screen bg-black">
       <nav
@@ -22,7 +32,7 @@ export default function ExperimentsPage() {
         </Link>
         <span className="text-primary">Experiments</span>
       </nav>
-      <PlateStudio />
+      <PlateStudio initial={decodeParams(query)} />
     </div>
   );
 }
