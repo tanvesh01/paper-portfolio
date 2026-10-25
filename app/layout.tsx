@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
+import { Geist, Geist_Mono, IBM_Plex_Serif, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { InteractiveCardProvider } from "@/components/ui/interactive-card-context";
@@ -20,6 +20,14 @@ const ibmPlexSerif = IBM_Plex_Serif({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-ibm-plex-serif",
+  display: "swap",
+});
+
+// The Fluid Functionalism Slider animates between font weights, which needs a
+// variable face that carries a real wght axis.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -72,7 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} ${ibmPlexSerif.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} ${ibmPlexSerif.variable} ${inter.variable} antialiased`}
       >
         <TooltipProvider delayDuration={100} skipDelayDuration={0}>
           <InteractiveCardProvider>{children}</InteractiveCardProvider>

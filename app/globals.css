@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
 :root {
@@ -50,6 +54,27 @@
       transform: translateY(0);
     }
   }
+
+  /* Interaction tokens (Fluid Functionalism): surface-relative hover and
+     active overlays, the selected fill, and the focus ring. */
+  --color-hover: var(--hover);
+  --color-active: var(--active);
+  --color-selected: var(--selected);
+  --color-destructive-light: var(--destructive-light);
+  --color-focus-ring: var(--focus-ring);
+  --color-tint: var(--tint);
+  --color-tint-hover: var(--tint-hover);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
+  /* Type-scale roles, so the Slider's text-body and text-caption utilities
+     resolve to the same sizes the rest of the site uses. */
+  --text-body: var(--fs-body);
+  --text-body--line-height: var(--lh-body);
+  --text-caption: var(--fs-caption);
+  --text-caption--line-height: var(--lh-caption);
 }
 
 @layer utilities {
@@ -87,4 +112,53 @@ html {
   text-decoration-color: #005ebb;
   text-decoration-thickness: 1px;
   text-underline-offset: 0px;
+}
+
+/* Fluid Functionalism tokens. The Slider draws its track, pips and thumbs from
+   these, so they sit on :root next to the site palette rather than replacing it. */
+:root {
+  --muted: #d4d4d4;
+  --muted-foreground: #737373;
+  --accent: #d4d4d4;
+  --border: #e5e5e5;
+  --hover: rgb(0 0 0 / 0.04);
+  --active: rgb(0 0 0 / 0.07);
+  --selected: #d4d4d4;
+  --destructive-light: #fef2f2;
+  --overlay: 0 0 0;
+  --focus-ring: #6b97ff;
+  --tint: rgb(0 0 0 / 0.08);
+  --tint-hover: rgb(0 0 0 / 0.065);
+  --fs-body: 13px;
+  --lh-body: 20px;
+  --fs-caption: 12px;
+  --lh-caption: 16px;
+}
+
+/* The Slider draws its track, handle line and pips in --foreground, and the site
+   sets that near-white for its dark body. On the site's white pages the track
+   would vanish, so a Slider on a light surface sits inside this scope. */
+.slider-surface {
+  --font-sans: var(--font-inter), var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  /* The pips design masks its fill with transparent-text copies of the label and
+     value painted on bg-background; on this site that token is near-black, so it
+     would print black bars. White keeps those copies invisible. */
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted-foreground: #737373;
+  --accent: #d4d4d4;
+  --border: #e5e5e5;
+  --active: rgb(0 0 0 / 0.07);
+  --selected: #d4d4d4;
+  --focus-ring: #005ebb;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 1px solid var(--focus-ring, #6b97ff);
+    outline-offset: 2px;
+  }
+  a:focus-visible {
+    border-radius: 2px;
+  }
 }
