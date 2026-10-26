@@ -1,23 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Minus, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { ColorPickerPopover } from "@/components/ui/color-picker";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { DEFAULT_PARAMS, renderProcedural, type ProceduralParams } from "./engine";
 import { encodeParams } from "./params";
+import { AXIS_GROUPS, WAVE_FREQS, nearestIndex } from "./axes";
 
 const ASPECT = 1.492;
 const PLATE_WIDTH = 1180;
-
-/**
- * The wave frequencies worth offering.
- *
- * A continuous track spends most of its travel on frequencies that shimmer rather than
- * read, so the useful ones are a fixed list and Freq is a Select instead of a slider.
- */
-const WAVE_FREQS = [0.5, 1, 1.6, 2.5, 3.5];
 
 /**
  * The plate, driven by Fluid Functionalism components.
@@ -99,82 +91,64 @@ export default function PlateStudio({
 
   /** The groups, as data, so each shell can lay them out differently. */
   const groups = useMemo(
-    () => [
-      {
-        title: "Field",
+    () =>
+      AXIS_GROUPS.map((group) => ({
+        title: group.title,
         rows: (
           <>
-            <Axis label="Bumps" value={params.bumpCount} min={0} max={18} step={1} onChange={(v) => set("bumpCount", v)} />
-            <Axis label="Wave" value={params.waveAmp} min={0} max={3} step={0.05} onChange={(v) => set("waveAmp", v)} />
-            <Axis label="Angle" value={params.waveAngle} min={0} max={180} step={1} onChange={(v) => set("waveAngle", v)} />
-            <Row label="Freq">
-              <Select
-                size="compact"
-                value={String(nearest(WAVE_FREQS, params.waveFreq))}
-                onValueChange={(index) => set("waveFreq", WAVE_FREQS[Number(index)] ?? WAVE_FREQS[0])}
-              >
-                <SelectTrigger aria-label="Wave frequency" className="w-full justify-between" />
-                <SelectContent>
-                  {WAVE_FREQS.map((freq, index) => (
-                    <SelectItem key={freq} index={index} value={String(index)}>
-                      {`${freq}\u00d7`}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </Row>
-            <Axis label="Curve" value={params.waveCurve} min={0} max={2} step={0.05} onChange={(v) => set("waveCurve", v)} />
-            <Axis label="Noise" value={params.noiseAmp} min={0} max={1.5} step={0.02} onChange={(v) => set("noiseAmp", v)} />
-            <Axis label="Detail" value={params.noiseScale} min={0.5} max={8} step={0.1} onChange={(v) => set("noiseScale", v)} />
+            {group.axes.map((axis) => (
+              <Axis
+                key={axis.key}
+                label={axis.label}
+                value={params[axis.key]}
+                steps={axis.steps}
+                onChange={(v) => set(axis.key, v)}
+              />
+            ))}
+            {group.title === "Field" && (
+              <Row label="Freq">
+                <Select
+                  size="compact"
+                  value={String(nearestIndex(WAVE_FREQS, params.waveFreq))}
+                  onValueChange={(index) =>
+                    set("waveFreq", WAVE_FREQS[Number(index)] ?? WAVE_FREQS[0])
+                  }
+                >
+                  <SelectTrigger aria-label="Wave frequency" className="w-full justify-between" />
+                  <SelectContent>
+                    {WAVE_FREQS.map((freq, index) => (
+                      <SelectItem key={freq} index={index} value={String(index)}>
+                        {`${freq}\u00d7`}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </Row>
+            )}
+            {group.title === "Stock" && (
+              <>
+                <ColorPickerPopover
+                  size="compact"
+                  value={params.ink}
+                  onValueChange={(value) => set("ink", value)}
+                  triggerLabel="Ink"
+                  triggerClassName="w-full justify-between"
+                />
+                <ColorPickerPopover
+                  size="compact"
+                  value={params.paper}
+                  onValueChange={(value) => set("paper", value)}
+                  triggerLabel="Paper"
+                  triggerClassName="w-full justify-between"
+                />
+              </>
+            )}
           </>
         ),
-      },
-      {
-        title: "Contours",
-        rows: (
-          <>
-            <Axis label="Levels" value={params.contourLevels} min={0} max={40} step={1} onChange={(v) => set("contourLevels", v)} />
-            <Axis label="Weight" value={params.contourWeight} min={0.0006} max={0.006} step={0.0002} onChange={(v) => set("contourWeight", v)} />
-          </>
-        ),
-      },
-      {
-        title: "Marks",
-        rows: (
-          <>
-            <Axis label="Bands" value={params.bands} min={1} max={10} step={1} onChange={(v) => set("bands", v)} />
-            <Axis label="Width" value={params.bandWidth} min={0.03} max={0.5} step={0.01} onChange={(v) => set("bandWidth", v)} />
-            <Axis label="Density" value={params.dotDensity} min={0} max={1.5} step={0.02} onChange={(v) => set("dotDensity", v)} />
-            <Axis label="Size" value={params.dotScale} min={0.4} max={3} step={0.05} onChange={(v) => set("dotScale", v)} />
-            <Axis label="Streak" value={params.dotStreak} min={0} max={2} step={0.02} onChange={(v) => set("dotStreak", v)} />
-          </>
-        ),
-      },
-      {
-        title: "Stock",
-        rows: (
-          <>
-            <Axis label="Grain" value={params.grain} min={0} max={1} step={0.02} onChange={(v) => set("grain", v)} />
-            <ColorPickerPopover
-              size="compact"
-              value={params.ink}
-              onValueChange={(value) => set("ink", value)}
-              triggerLabel="Ink"
-              triggerClassName="w-full justify-between"
-            />
-            <ColorPickerPopover
-              size="compact"
-              value={params.paper}
-              onValueChange={(value) => set("paper", value)}
-              triggerLabel="Paper"
-              triggerClassName="w-full justify-between"
-            />
-          </>
-        ),
-      },
-    ],
+      })),
     [params, set],
   );
+
 
   const canvas = (
     <canvas ref={canvasRef} className="block h-auto w-full" aria-label="Procedural plate" />
@@ -300,99 +274,28 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 interface AxisProps {
   label: string;
   value: number;
-  min: number;
-  max: number;
-  step: number;
+  /** The stops this axis snaps to; each renders as a dot on the track. */
+  steps: number[];
   onChange: (value: number) => void;
 }
 
 /**
- * One numeric axis, as a stepper.
+ * One numeric axis, drawn as a slider with a dot at every stop.
  *
- * A stepper rather than a slider because the panel is read as a list of exact numbers: a
- * slider's track is 216px wide and cannot be aimed at a specific value, while a stepper
- * lands on the step grid every time and the number stays typeable.
- *
- * The value is snapped to the grid before it reaches state, and trimmed of float noise,
- * so equal plates serialise to equal URLs.
+ * The dots are the point: a continuous track gave no sense of where a control could land,
+ * and the thumb is 16px wide, so without them the reader cannot tell 22 levels from 24.
+ * The value label is click-to-edit, so an exact number is still one click away.
  */
-function Axis({ label, value, min, max, step, onChange }: AxisProps) {
-  const nudge = (direction: -1 | 1) => {
-    const next = roundToStep(value + direction * step, min, step);
-    onChange(Math.max(min, Math.min(max, next)));
-  };
-
+function Axis({ label, value, steps, onChange }: AxisProps) {
   return (
-    <div className="mb-1 flex items-center gap-2">
-      <label
-        htmlFor={`axis-${label}`}
-        className="min-w-[5.5rem] font-sans text-[12px] leading-[18px] text-neutral-500"
-      >
-        {label}
-      </label>
-
-      <div className="flex min-w-0 flex-1 items-center justify-end gap-1">
-        <Button
-          type="button"
-          size="icon-compact"
-          variant="ghost"
-          onClick={() => nudge(-1)}
-          disabled={value <= min}
-          aria-label={`Decrease ${label}`}
-          className="border border-neutral-200 text-neutral-500"
-        >
-          <Minus aria-hidden="true" />
-        </Button>
-
-        <input
-          id={`axis-${label}`}
-          type="number"
-          inputMode="decimal"
-          value={trimNumber(value)}
-          min={min}
-          max={max}
-          step={step}
-          onChange={(event) => {
-            const parsed = Number.parseFloat(event.target.value);
-            if (Number.isFinite(parsed)) {
-              onChange(Math.max(min, Math.min(max, roundToStep(parsed, min, step))));
-            }
-          }}
-          className="h-7 w-[4.5rem] min-w-0 rounded border border-neutral-200 bg-white px-1 text-center font-sans text-[12px] tabular-nums text-neutral-800 outline-none focus:border-neutral-500 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-        />
-
-        <Button
-          type="button"
-          size="icon-compact"
-          variant="ghost"
-          onClick={() => nudge(1)}
-          disabled={value >= max}
-          aria-label={`Increase ${label}`}
-          className="border border-neutral-200 text-neutral-500"
-        >
-          <Plus aria-hidden="true" />
-        </Button>
-      </div>
-    </div>
+    <Slider
+      size="compact"
+      label={label}
+      value={value}
+      steps={steps}
+      showSteps
+      onChange={(next) => onChange(next as number)}
+      className="[&>span:first-child]:min-w-[5.5rem] !mb-0.5"
+    />
   );
-}
-
-/** Snap to the step grid and trim float noise, so equal plates give equal URLs. */
-function roundToStep(value: number, min: number, step: number): number {
-  const snapped = Math.round((value - min) / step) * step + min;
-  return Number(snapped.toFixed(4));
-}
-
-/** Drop trailing zeros so a stepper reads "7", not "7.0000". */
-function trimNumber(value: number): string {
-  return String(Number(value.toFixed(4)));
-}
-
-/** The index of the nearest entry, for a value that must land on a fixed set. */
-function nearest(values: number[], target: number): number {
-  let best = 0;
-  for (let i = 1; i < values.length; i += 1) {
-    if (Math.abs((values[i] ?? 0) - target) < Math.abs((values[best] ?? 0) - target)) best = i;
-  }
-  return best;
 }
