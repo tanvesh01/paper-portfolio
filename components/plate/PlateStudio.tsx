@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Slider } from "@/components/ui/slider";
+import { Minus, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { ColorPickerPopover } from "@/components/ui/color-picker";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { DEFAULT_PARAMS, renderProcedural, type ProceduralParams } from "./engine";
@@ -180,7 +181,7 @@ export default function PlateStudio({
   );
 
   const meta = (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-wider text-white/45">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-wider text-neutral-500">
       <span>{renderMs === null ? "rendering…" : `${renderMs.toFixed(0)} ms`}</span>
       <span>
         {PLATE_WIDTH} × {Math.round(PLATE_WIDTH / ASPECT)}
@@ -190,14 +191,14 @@ export default function PlateStudio({
         <button
           type="button"
           onClick={copyLink}
-          className="border border-white/20 px-2.5 py-1 uppercase tracking-wider text-white/60 transition-colors hover:border-white/50 hover:text-white"
+          className="border border-neutral-300 px-2.5 py-1 uppercase tracking-wider text-neutral-600 transition-colors hover:border-neutral-500 hover:text-neutral-900"
         >
           {copied ? "Copied" : "Copy link"}
         </button>
         <button
           type="button"
           onClick={download}
-          className="border border-white/20 px-2.5 py-1 uppercase tracking-wider text-white/60 transition-colors hover:border-white/50 hover:text-white"
+          className="border border-neutral-300 px-2.5 py-1 uppercase tracking-wider text-neutral-600 transition-colors hover:border-neutral-500 hover:text-neutral-900"
         >
           PNG
         </button>
@@ -266,7 +267,8 @@ export default function PlateStudio({
     <div className="mx-auto w-full max-w-[1720px] px-4 pb-8 md:px-8">
       <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-[minmax(0,1fr)_348px] md:gap-8">
         <main className="min-w-0" aria-label="Procedural field output">
-          <div className="bg-white/5 shadow-[0_20px_44px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
+          {/* A light sheet on a light page: the plate reads as paper, not as a screen. */}
+          <div className="bg-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_12px_32px_rgba(0,0,0,0.10)] ring-1 ring-black/10">
             {canvas}
           </div>
           <div className="mt-2.5">{meta}</div>
@@ -305,24 +307,73 @@ interface AxisProps {
 }
 
 /**
- * One numeric axis.
+ * One numeric axis, as a stepper.
  *
- * The value is snapped to the step grid before it reaches state. The slider snaps with
- * `round((v - min) / step) * step + min`, which lands on values like 0.30000000000000004,
- * and one plate would then serialise as two different URLs.
+ * A stepper rather than a slider because the panel is read as a list of exact numbers: a
+ * slider's track is 216px wide and cannot be aimed at a specific value, while a stepper
+ * lands on the step grid every time and the number stays typeable.
+ *
+ * The value is snapped to the grid before it reaches state, and trimmed of float noise,
+ * so equal plates serialise to equal URLs.
  */
 function Axis({ label, value, min, max, step, onChange }: AxisProps) {
+  const nudge = (direction: -1 | 1) => {
+    const next = roundToStep(value + direction * step, min, step);
+    onChange(Math.max(min, Math.min(max, next)));
+  };
+
   return (
-    <Slider
-      size="compact"
-      label={label}
-      value={value}
-      min={min}
-      max={max}
-      step={step}
-      onChange={(next) => onChange(roundToStep(next as number, min, step))}
-      className="[&>span:first-child]:min-w-[6.25rem] !mb-0.5"
-    />
+    <div className="mb-1 flex items-center gap-2">
+      <label
+        htmlFor={`axis-${label}`}
+        className="min-w-[5.5rem] font-sans text-[12px] leading-[18px] text-neutral-500"
+      >
+        {label}
+      </label>
+
+      <div className="flex min-w-0 flex-1 items-center justify-end gap-1">
+        <Button
+          type="button"
+          size="icon-compact"
+          variant="ghost"
+          onClick={() => nudge(-1)}
+          disabled={value <= min}
+          aria-label={`Decrease ${label}`}
+          className="border border-neutral-200 text-neutral-500"
+        >
+          <Minus aria-hidden="true" />
+        </Button>
+
+        <input
+          id={`axis-${label}`}
+          type="number"
+          inputMode="decimal"
+          value={trimNumber(value)}
+          min={min}
+          max={max}
+          step={step}
+          onChange={(event) => {
+            const parsed = Number.parseFloat(event.target.value);
+            if (Number.isFinite(parsed)) {
+              onChange(Math.max(min, Math.min(max, roundToStep(parsed, min, step))));
+            }
+          }}
+          className="h-7 w-[4.5rem] min-w-0 rounded border border-neutral-200 bg-white px-1 text-center font-sans text-[12px] tabular-nums text-neutral-800 outline-none focus:border-neutral-500 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        />
+
+        <Button
+          type="button"
+          size="icon-compact"
+          variant="ghost"
+          onClick={() => nudge(1)}
+          disabled={value >= max}
+          aria-label={`Increase ${label}`}
+          className="border border-neutral-200 text-neutral-500"
+        >
+          <Plus aria-hidden="true" />
+        </Button>
+      </div>
+    </div>
   );
 }
 
@@ -330,6 +381,11 @@ function Axis({ label, value, min, max, step, onChange }: AxisProps) {
 function roundToStep(value: number, min: number, step: number): number {
   const snapped = Math.round((value - min) / step) * step + min;
   return Number(snapped.toFixed(4));
+}
+
+/** Drop trailing zeros so a stepper reads "7", not "7.0000". */
+function trimNumber(value: number): string {
+  return String(Number(value.toFixed(4)));
 }
 
 /** The index of the nearest entry, for a value that must land on a fixed set. */
