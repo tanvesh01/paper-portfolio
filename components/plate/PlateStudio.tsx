@@ -11,15 +11,6 @@ const ASPECT = 1.492;
 const PLATE_WIDTH = 1180;
 
 /**
- * The page shells.
- *
- * Every layout renders the same canvas, controls, and state; only the arrangement of the
- * three regions (art, controls, meta) changes. Keeping them in one component means a
- * control added to `controls` appears in all four, and none of them can drift.
- */
-export type PlateLayout = "split" | "overlay" | "dock" | "stack";
-
-/**
  * The wave frequencies worth offering.
  *
  * A continuous track spends most of its travel on frequencies that shimmer rather than
@@ -40,10 +31,8 @@ const WAVE_FREQS = [0.5, 1, 1.6, 2.5, 3.5];
  */
 export default function PlateStudio({
   initial,
-  layout = "split",
 }: {
   initial: ProceduralParams;
-  layout?: PlateLayout;
 }) {
   const [params, setParams] = useState<ProceduralParams>(initial);
   const [renderMs, setRenderMs] = useState<number | null>(null);
@@ -249,8 +238,8 @@ export default function PlateStudio({
     </div>
   );
 
-  /** Vertical stack of groups: the sidebar and the overlay card. */
-  const stack = (
+  /** The controls, as a vertical stack: the inspector's whole body. */
+  const panel = (
     <>
       {header}
       <div className="pt-2">
@@ -269,111 +258,10 @@ export default function PlateStudio({
     </>
   );
 
-  /** Side-by-side columns: the bottom dock and the below-fold grid. */
-  const columns = (withHeader: boolean) => (
-    <>
-      {withHeader && <div className="mb-2">{header}</div>}
-      <div className="grid grid-cols-2 gap-x-5 gap-y-3 lg:grid-cols-4">
-        {groups.map((group) => (
-          <section key={group.title}>
-            <h2 className="mb-1 font-mono text-[9.5px] uppercase tracking-wider text-neutral-400">
-              {group.title}
-            </h2>
-            <div>{group.rows}</div>
-          </section>
-        ))}
-      </div>
-    </>
-  );
-
   const card =
     "slider-surface rounded-lg bg-white p-3 text-neutral-900 ring-1 ring-black/10";
 
-  if (layout === "overlay") {
-    // The art fills the viewport and the panel floats over it, the way an editor's
-    // inspector sits above the document rather than beside it.
-    //
-    // Below `md` there is no room beside the art, so the panel drops into normal flow
-    // under it: a panel that covers the plate on a phone is worse than one below it.
-    // One instance moves between the two positions, so its state is never duplicated.
-    return (
-      <div className="relative w-full bg-black">
-        <div className="min-h-[calc(100vh-4.5rem)] overflow-hidden">
-          <div className="flex items-center justify-center p-4 md:absolute md:inset-0 md:p-8">
-            <div className="w-full max-w-[1400px] shadow-[0_30px_80px_rgba(0,0,0,0.6)]">{canvas}</div>
-          </div>
-          {/* A solid strip, not a gradient: the meta text has to stay legible over a
-              plate that can be any colour. */}
-          <div className="border-t border-white/10 bg-black/90 px-4 py-2 md:absolute md:inset-x-0 md:bottom-0 md:px-8">
-            {meta}
-          </div>
-        </div>
-        <aside
-          className={`${card} mx-4 mt-4 shadow-[0_18px_50px_rgba(0,0,0,0.45)] md:absolute md:top-6 md:right-8 md:mx-0 md:mt-0 md:max-h-[calc(100vh-10rem)] md:w-[320px] md:overflow-y-auto md:backdrop-blur-md`}
-          aria-label="Procedural field controls"
-        >
-          {stack}
-        </aside>
-      </div>
-    );
-  }
-
-  if (layout === "dock") {
-    // A single centred plate with the controls as a dock along the bottom edge, grouped
-    // into columns. The art keeps the full width of the eye; nothing sits beside it.
-    return (
-      <div className="mx-auto w-full max-w-[1500px] px-4 pb-6 md:px-8">
-        {/* The plate is width-scaled, so its height is bounded by capping the width: the
-            dock has to stay on screen without the reader scrolling to find it. */}
-        <div
-          className="mx-auto w-full bg-white/5 ring-1 ring-white/10 shadow-[0_20px_44px_rgba(0,0,0,0.5)]"
-          style={{ maxWidth: "min(1080px, calc((100vh - 480px) * 1.492))" }}
-        >
-          {canvas}
-        </div>
-        <div
-          className="mx-auto mt-2 w-full"
-          style={{ maxWidth: "min(1080px, calc((100vh - 480px) * 1.492))" }}
-        >
-          {meta}
-        </div>
-        <aside
-          className={`${card} mt-4 shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.10)]`}
-          aria-label="Procedural field controls"
-        >
-          {columns(true)}
-        </aside>
-      </div>
-    );
-  }
-
-  if (layout === "stack") {
-    // Print-sheet order: the plate runs edge to edge at the top, the controls follow as a
-    // four-column grid below it. The page scrolls; nothing is pinned.
-    return (
-      <div className="mx-auto w-full max-w-[1500px] px-4 pb-10 md:px-8">
-        {/* Capped so the first row of controls is visible in the same screen as the
-            plate; the rest of the grid follows on scroll. */}
-        <div
-          className="mx-auto bg-white/5 ring-1 ring-white/10 shadow-[0_20px_44px_rgba(0,0,0,0.5)]"
-          style={{ maxWidth: "calc((100vh - 520px) * 1.492)" }}
-        >
-          {canvas}
-        </div>
-        <div className="mx-auto mt-2.5" style={{ maxWidth: "calc((100vh - 520px) * 1.492)" }}>
-          {meta}
-        </div>
-        <aside
-          className={`${card} mt-6 shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.10)]`}
-          aria-label="Procedural field controls"
-        >
-          {columns(true)}
-        </aside>
-      </div>
-    );
-  }
-
-  // split: art left, inspector right. The baseline.
+  // Art left, inspector right: the plate stays large while every control sits beside it.
   return (
     <div className="mx-auto w-full max-w-[1720px] px-4 pb-8 md:px-8">
       <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-[minmax(0,1fr)_348px] md:gap-8">
@@ -388,7 +276,7 @@ export default function PlateStudio({
           className={`${card} w-full shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.10)] md:sticky md:top-6 md:max-h-[calc(100vh-3rem)] md:overflow-y-auto`}
           aria-label="Procedural field controls"
         >
-          {stack}
+          {panel}
         </aside>
       </div>
     </div>
