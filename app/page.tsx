@@ -68,7 +68,7 @@ export default function Home() {
                 </a>
                 <a
                   href="/experiments"
-                  className="font-departure text-sm text-black uppercase underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-primary"
+                  className="font-departure text-primary text-sm uppercase underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-black"
                 >
                   Experiments
                 </a>
