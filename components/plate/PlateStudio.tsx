@@ -158,7 +158,11 @@ export default function PlateStudio({
 
 
   const canvas = (
-    <canvas ref={canvasRef} className="block h-auto w-full" aria-label="Procedural plate" />
+    <canvas
+      ref={canvasRef}
+      className="block h-auto max-h-full w-auto max-w-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_12px_32px_rgba(0,0,0,0.10)] ring-1 ring-black/10"
+      aria-label="Procedural plate"
+    />
   );
 
   const meta = (
@@ -245,19 +249,20 @@ export default function PlateStudio({
 
   // Art left, inspector right: the plate stays large while every control sits beside it.
   return (
-    <div className="mx-auto w-full max-w-[1720px] px-4 pb-8 md:px-8">
-      <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-[minmax(0,1fr)_348px] md:gap-8">
-        <main className="min-w-0" aria-label="Procedural field output">
+    <div className="mx-auto flex min-h-0 w-full max-w-[1720px] flex-1 px-4 pb-4 md:px-8">
+      <div className="grid h-full min-h-0 w-full grid-cols-1 grid-rows-[minmax(0,2fr)_minmax(0,3fr)] gap-5 md:grid-cols-[minmax(0,1fr)_348px] md:grid-rows-1 md:gap-8">
+        <main className="flex min-h-0 min-w-0 flex-col" aria-label="Procedural field output">
           {/* A light sheet on a light page: the plate reads as paper, not as a screen. */}
-          <div className="bg-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_12px_32px_rgba(0,0,0,0.10)] ring-1 ring-black/10">
+          <div className="flex min-h-0 items-start">
             {canvas}
           </div>
-          <div className="mt-2.5">{meta}</div>
+          <div className="mt-2.5 shrink-0">{meta}</div>
         </main>
 
         <aside
-          className={`${card} w-full shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.10)] md:sticky md:top-6 md:max-h-[calc(100vh-3rem)] md:overflow-y-auto`}
+          className={`${card} h-full min-h-0 w-full overflow-y-auto overscroll-contain shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.10)]`}
           aria-label="Procedural field controls"
+          tabIndex={0}
         >
           {panel}
           {children}

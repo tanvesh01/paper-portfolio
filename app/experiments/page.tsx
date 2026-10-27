@@ -23,10 +23,10 @@ export default async function ExperimentsPage({
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex h-dvh flex-col overflow-hidden bg-white">
       <nav
         aria-label="Primary"
-        className="flex items-baseline gap-6 px-4 py-6 font-mono uppercase md:px-8"
+        className="flex shrink-0 items-baseline gap-6 px-4 py-6 font-mono uppercase md:px-8"
       >
         <Link href="/" className="text-neutral-900 transition-colors hover:text-primary">
           Tanvesh
