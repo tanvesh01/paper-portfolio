@@ -24,8 +24,10 @@ const PLATE_WIDTH = 1180;
  */
 export default function PlateStudio({
   initial,
+  children,
 }: {
   initial: ProceduralParams;
+  children: React.ReactNode;
 }) {
   const [params, setParams] = useState<ProceduralParams>(initial);
   const [renderMs, setRenderMs] = useState<number | null>(null);
@@ -258,6 +260,7 @@ export default function PlateStudio({
           aria-label="Procedural field controls"
         >
           {panel}
+          {children}
         </aside>
       </div>
     </div>
