@@ -114,7 +114,7 @@ export default function PlateStudio({
                     set("waveFreq", WAVE_FREQS[Number(index)] ?? WAVE_FREQS[0])
                   }
                 >
-                  <SelectTrigger aria-label="Wave frequency" className="w-full justify-between" />
+                  <SelectTrigger aria-label="Wave frequency" className="h-9 w-full justify-between" />
                   <SelectContent>
                     {WAVE_FREQS.map((freq, index) => (
                       <SelectItem key={freq} index={index} value={String(index)}>
@@ -126,7 +126,10 @@ export default function PlateStudio({
               </Row>
             )}
             {group.title === "Stock" && (
-              <>
+              // The triggers are inline-flex with no margin of their own, so side by
+              // side they touch; the grid gives each an equal column and a real gap.
+              // Their height is matched to a slider row so the rhythm holds.
+              <div className="grid grid-cols-2 gap-2 [&_button]:h-9">
                 <ColorPickerPopover
                   size="compact"
                   value={params.ink}
@@ -141,7 +144,7 @@ export default function PlateStudio({
                   triggerLabel="Paper"
                   triggerClassName="w-full justify-between"
                 />
-              </>
+              </div>
             )}
           </>
         ),
@@ -206,7 +209,7 @@ export default function PlateStudio({
       <button
         type="button"
         onClick={reset}
-        className="ml-auto uppercase tracking-wider text-neutral-400 transition-colors hover:text-neutral-900"
+        className="ml-auto uppercase tracking-wider text-neutral-600 transition-colors hover:text-neutral-900"
       >
         Reset
       </button>
@@ -223,7 +226,7 @@ export default function PlateStudio({
             key={group.title}
             className="border-t border-neutral-200 pt-2 pb-2 first:border-t-0 first:pt-0 last:pb-0"
           >
-            <h2 className="mb-1 font-mono text-[9.5px] uppercase tracking-wider text-neutral-400">
+            <h2 className="mb-1 font-mono text-[9.5px] uppercase tracking-wider text-neutral-600">
               {group.title}
             </h2>
             <div>{group.rows}</div>
