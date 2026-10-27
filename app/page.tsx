@@ -58,13 +58,21 @@ export default function Home() {
                 </p>
               </main>
 
-              <a
-                href="#contact"
-                className="bg-primary font-departure relative mt-8 inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-[background-color,transform] duration-150 ease-out active:scale-[0.97] md:border-b-0 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/90"
-              >
-                <GridPattern />
-                Get in touch
-              </a>
+              <div className="mt-8 flex items-center gap-6">
+                <a
+                  href="#contact"
+                  className="bg-primary font-departure relative inline-flex w-fit items-center gap-2 border-black px-6 py-3 text-sm text-white uppercase transition-[background-color,transform] duration-150 ease-out active:scale-[0.97] md:border-b-0 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/90"
+                >
+                  <GridPattern />
+                  Get in touch
+                </a>
+                <a
+                  href="/experiments"
+                  className="font-departure text-primary text-sm uppercase underline transition-colors duration-150 [@media(hover:hover)_and_(pointer:fine)]:hover:text-black"
+                >
+                  Experiments
+                </a>
+              </div>
             </div>
 
             <div className="relative min-h-[320px] w-full overflow-hidden bg-neutral-100 md:h-full">
