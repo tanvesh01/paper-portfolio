@@ -6,12 +6,8 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  /* The site is light. These two are the base every component reads, and every
-     page covers the body with its own white surface, so a dark value here only
-     leaked through to portalled popups — which inherit from :root, not from the
-     panel they were opened from. */
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
   --surface-1: #FAFAFA;
   --surface-2: #FCFCFC;
   --surface-3: #FFFFFF;

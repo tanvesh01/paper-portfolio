@@ -115,7 +115,7 @@ export default function PlateStudio({
                   }
                 >
                   <SelectTrigger aria-label="Wave frequency" className="h-9 w-full justify-between" />
-                  <SelectContent>
+                  <SelectContent className="slider-surface">
                     {WAVE_FREQS.map((freq, index) => (
                       <SelectItem key={freq} index={index} value={String(index)}>
                         {`${freq}\u00d7`}
@@ -136,6 +136,7 @@ export default function PlateStudio({
                   onValueChange={(value) => set("ink", value)}
                   triggerLabel="Ink"
                   triggerClassName="w-full justify-between"
+                  className="slider-surface"
                 />
                 <ColorPickerPopover
                   size="compact"
@@ -143,6 +144,7 @@ export default function PlateStudio({
                   onValueChange={(value) => set("paper", value)}
                   triggerLabel="Paper"
                   triggerClassName="w-full justify-between"
+                  className="slider-surface"
                 />
               </div>
             )}
