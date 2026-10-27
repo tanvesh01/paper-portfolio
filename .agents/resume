@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Bring the supervised services back after an orb wakes.
+#
+# Pausing an orb stops its processes; resuming recreates the container, so the
+# Next.js server and its portal proxy are gone even though `.amp/services.yaml`
+# still declares them. Without this script the portal URL returns nothing until
+# someone runs `amp orb services ensure` by hand.
+#
+# Keep this fast and idempotent: Amp waits 10 seconds and then continues without
+# waiting, so it must not install anything or block.
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+# `ensure` starts every service declared in .amp/services.yaml, waits for its
+# port, runs the readiness check, and re-registers the portal. Running it when
+# the services are already up is a no-op.
+if ! amp orb services ensure >/dev/null 2>&1; then
+  echo "orb resume: services ensure failed; see ~/.cache/amp/logs/orb-services/" >&2
+  exit 0
+fi
+
+echo "orb resume: portfolio and portal proxy are up"
